@@ -33,7 +33,26 @@ namespace BugTracker_API
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddSwaggerDocument();
+            services.AddSwaggerDocument(config =>
+            {
+                config.PostProcess = document =>
+                {
+                    document.Info.Version = "v1";
+                    document.Info.Title = "BugTracker API";
+                    document.Info.Description = "Simple ASP.NET Core Web API for bug tracking.";
+                    document.Info.Contact = new NSwag.OpenApiContact
+                    {
+                        Name = "Dawid Osuchowski",
+                        Email = string.Empty,
+                        Url = "https://github.com/tulphoon"
+                    };
+                    document.Info.License = new NSwag.OpenApiLicense
+                    {
+                        Name = "MIT License",
+                        Url = "https://choosealicense.com/licenses/mit/"
+                    };
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
