@@ -44,12 +44,12 @@ namespace BugTracker_API
                     {
                         Name = "Dawid Osuchowski",
                         Email = string.Empty,
-                        Url = "https://github.com/tulphoon"
+                        Url = "https://github.com/tulphoon/bugtracker"
                     };
                     document.Info.License = new NSwag.OpenApiLicense
                     {
                         Name = "MIT License",
-                        Url = "https://choosealicense.com/licenses/mit/"
+                        Url = "https://github.com/tulphoon/BugTracker/blob/master/LICENSE"
                     };
                 };
             });
