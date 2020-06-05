@@ -26,16 +26,16 @@ namespace BugTracker_API.Controllers
 
         // GET: api/Issues
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<IssueDto>>> GetIssues()
+        public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
         {
-            return await _context.Issues.Select(i => _mapper.Map<IssueDto>(i)).ToListAsync();
+            return await _context.Issues.Include(a => a.Comments).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
         }
 
         // GET: api/Issues/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Issue>> GetIssue(long id)
+        public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
         {
-            var issue = await _context.Issues.FindAsync(id);
+            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(issue => issue.Comments).SingleOrDefaultAsync(i => i.Id == id));
 
             if (issue == null)
             {
@@ -46,17 +46,17 @@ namespace BugTracker_API.Controllers
         }
 
         // PUT: api/Issues/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutIssue(long id, Issue issue)
+        public async Task<IActionResult> PutIssue(long id, PutIssueDto putIssue)
         {
-            if (id != issue.Id)
+            var issue = await _context.Issues.FindAsync(id);
+            
+            if (issue == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(issue).State = EntityState.Modified;
+            _context.Entry(_mapper.Map(putIssue, issue)).State = EntityState.Modified;
 
             try
             {
@@ -78,12 +78,11 @@ namespace BugTracker_API.Controllers
         }
 
         // POST: api/Issues
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Issue>> PostIssue(Issue issue)
+        public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
         {
-            _context.Issues.Add(issue);
+            var issue = _mapper.Map<Issue>(postIssue);
+            _context.Issues.Add(_mapper.Map<Issue>(issue));
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetIssue", new { id = issue.Id }, issue);
@@ -91,7 +90,7 @@ namespace BugTracker_API.Controllers
 
         // DELETE: api/Issues/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Issue>> DeleteIssue(long id)
+        public async Task<ActionResult<GetIssueDto>> DeleteIssue(long id)
         {
             var issue = await _context.Issues.FindAsync(id);
             if (issue == null)
@@ -102,7 +101,7 @@ namespace BugTracker_API.Controllers
             _context.Issues.Remove(issue);
             await _context.SaveChangesAsync();
 
-            return issue;
+            return _mapper.Map<GetIssueDto>(issue);
         }
 
         private bool IssueExists(long id)

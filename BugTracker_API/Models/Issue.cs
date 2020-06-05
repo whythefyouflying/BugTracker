@@ -11,5 +11,5 @@ public class Issue
     public string Body { get; set; }
     public string Status { get; set; } = "open";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public ICollection<Comment> Comments { get; set; }
+    public List<Comment> Comments { get; set; }
 }

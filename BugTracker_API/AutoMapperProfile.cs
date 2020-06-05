@@ -11,7 +11,10 @@ namespace BugTracker_API
     {
         public AutoMapperProfile()
         {
-            CreateMap<Issue, IssueDto>();
+            CreateMap<Issue, GetIssueDto>()
+                .ForMember(d => d.Comments, opt => opt.MapFrom(src => src.Comments.Count()));
+            CreateMap<PostIssueDto, Issue>();
+            CreateMap<PutIssueDto, Issue>();
         }
     }
 }
