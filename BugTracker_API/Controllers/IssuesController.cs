@@ -28,14 +28,14 @@ namespace BugTracker_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
         {
-            return await _context.Issues.Include(a => a.Comments).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
+            return await _context.Issues.Include(i => i.Comments).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
         }
 
         // GET: api/Issues/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
         {
-            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(issue => issue.Comments).SingleOrDefaultAsync(i => i.Id == id));
+            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(i => i.Comments).SingleOrDefaultAsync(i => i.Id == id));
 
             if (issue == null)
             {
@@ -82,7 +82,7 @@ namespace BugTracker_API.Controllers
         public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
         {
             var issue = _mapper.Map<Issue>(postIssue);
-            _context.Issues.Add(_mapper.Map<Issue>(issue));
+            _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetIssue", new { id = issue.Id }, issue);
