@@ -6,53 +6,69 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
+using AutoMapper;
+using BugTracker_API.Models;
 
 namespace BugTracker_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/issues/{issueId:int}/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly IMapper _mapper;
 
-        public CommentsController(DataContext context)
+        public CommentsController(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Comments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetComments()
+        public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long issueId)
         {
-            return await _context.Comments.Include(comment => comment.Issue).ToListAsync();
+            if (!IssueExists(issueId))
+                return NotFound();
+
+            var comments = await _context.Comments.Include(c => c.Issue).ToListAsync();
+            return comments.Where(c => c.Issue.Id == issueId).Select(c => _mapper.Map<GetCommentDto>(c)).ToList();
         }
 
         // GET: api/Comments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Comment>> GetComment(long id)
+        public async Task<ActionResult<GetCommentDto>> GetComment(long issueId, long id)
         {
-            var comment = await _context.Comments.FindAsync(id);
+            if (!IssueExists(issueId))
+                return NotFound();
 
-            if (comment == null)
+            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+
+            if (comment == null || comment.Issue.Id != issueId)
             {
                 return NotFound();
             }
 
-            return comment;
+            return _mapper.Map<GetCommentDto>(comment);
         }
 
         // PUT: api/Comments/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutComment(long id, Comment comment)
+        public async Task<IActionResult> PutComment(long issueId, long id, PutCommentDto putComment)
         {
-            if (id != comment.Id)
+            if (!IssueExists(issueId))
+                return NotFound();
+
+            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+
+            if (comment == null || comment.Issue.Id != issueId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(comment).State = EntityState.Modified;
+            _context.Entry(_mapper.Map(putComment, comment)).State = EntityState.Modified;
 
             try
             {
@@ -76,30 +92,36 @@ namespace BugTracker_API.Controllers
         // POST: api/Comments
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost("{id}")]
-        public async Task<ActionResult<Comment>> PostComment(long id, Comment comment)
+        [HttpPost]
+        public async Task<ActionResult<GetCommentDto>> PostComment(long issueId, PostCommentDto postComment)
         {
-            var issue = await _context.Issues.FindAsync(id);
+            var issue = await _context.Issues.FindAsync(issueId);
 
             if (issue == null)
             {
                 return NotFound();
             }
 
+            var comment = _mapper.Map<Comment>(postComment);
+
             comment.Issue = issue;
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComment", new { id = comment.Id }, comment);
+            return CreatedAtAction("GetComment", new { id = comment.Id, issueId }, _mapper.Map<GetCommentDto>(comment));
         }
 
         // DELETE: api/Comments/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Comment>> DeleteComment(long id)
+        public async Task<ActionResult<GetCommentDto>> DeleteComment(long issueId, long id)
         {
-            var comment = await _context.Comments.FindAsync(id);
-            if (comment == null)
+            if (!IssueExists(issueId))
+                return NotFound();
+
+            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+
+            if (comment == null || comment.Issue.Id != issueId)
             {
                 return NotFound();
             }
@@ -107,12 +129,17 @@ namespace BugTracker_API.Controllers
             _context.Comments.Remove(comment);
             await _context.SaveChangesAsync();
 
-            return comment;
+            return _mapper.Map<GetCommentDto>(comment);
         }
 
         private bool CommentExists(long id)
         {
             return _context.Comments.Any(e => e.Id == id);
+        }
+
+        private bool IssueExists(long id)
+        {
+            return _context.Issues.Any(e => e.Id == id);
         }
     }
 }

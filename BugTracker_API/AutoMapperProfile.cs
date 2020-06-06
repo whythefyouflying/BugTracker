@@ -15,6 +15,10 @@ namespace BugTracker_API
                 .ForMember(d => d.Comments, opt => opt.MapFrom(src => src.Comments.Count()));
             CreateMap<PostIssueDto, Issue>();
             CreateMap<PutIssueDto, Issue>();
+
+            CreateMap<Comment, GetCommentDto>();
+            CreateMap<PostCommentDto, Comment>();
+            CreateMap<PutCommentDto, Comment>();
         }
     }
 }
