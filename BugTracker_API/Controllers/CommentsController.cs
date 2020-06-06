@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker_API.Controllers
 {
+    [Authorize]
     [Route("api/issues/{issueId:int}/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
@@ -24,6 +26,7 @@ namespace BugTracker_API.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         // GET: api/Comments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long issueId)
@@ -35,6 +38,7 @@ namespace BugTracker_API.Controllers
             return comments.Where(c => c.Issue.Id == issueId).Select(c => _mapper.Map<GetCommentDto>(c)).ToList();
         }
 
+        [AllowAnonymous]
         // GET: api/Comments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GetCommentDto>> GetComment(long issueId, long id)

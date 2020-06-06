@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker_API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IssuesController : ControllerBase
@@ -24,6 +26,7 @@ namespace BugTracker_API.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         // GET: api/Issues
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
@@ -31,6 +34,7 @@ namespace BugTracker_API.Controllers
             return await _context.Issues.Include(i => i.Comments).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
         }
 
+        [AllowAnonymous]
         // GET: api/Issues/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
