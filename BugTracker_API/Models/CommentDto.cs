@@ -7,6 +7,7 @@ namespace BugTracker_API.Models
         public long Id { get; set; }
         public string Body { get; set; }
         public DateTime CreatedAt { get; set; }
+        public User User { get; set; }
     }
 
     public class PostCommentDto

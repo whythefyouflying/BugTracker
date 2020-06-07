@@ -9,6 +9,7 @@ using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BugTracker_API.Controllers
 {
@@ -31,7 +32,7 @@ namespace BugTracker_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
         {
-            return await _context.Issues.Include(i => i.Comments).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
+            return await _context.Issues.Include(i => i.Comments).Include(i => i.User).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
         }
 
         [AllowAnonymous]
@@ -39,7 +40,7 @@ namespace BugTracker_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
         {
-            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(i => i.Comments).SingleOrDefaultAsync(i => i.Id == id));
+            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(i => i.Comments).Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id));
 
             if (issue == null)
             {
@@ -86,6 +87,7 @@ namespace BugTracker_API.Controllers
         public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
         {
             var issue = _mapper.Map<Issue>(postIssue);
+            issue.User = await _context.Users.FindAsync(int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value));
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
