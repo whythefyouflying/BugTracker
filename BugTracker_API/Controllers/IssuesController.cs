@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
+using BugTracker_API.Services;
 
 namespace BugTracker_API.Controllers
 {
@@ -20,11 +18,13 @@ namespace BugTracker_API.Controllers
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private readonly ISharedService _service;
 
-        public IssuesController(DataContext context, IMapper mapper)
+        public IssuesController(DataContext context, IMapper mapper, ISharedService service)
         {
             _context = context;
             _mapper = mapper;
+            _service = service;
         }
 
         [AllowAnonymous]
@@ -32,7 +32,11 @@ namespace BugTracker_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
         {
-            return await _context.Issues.Include(i => i.Comments).Include(i => i.User).Select(i => _mapper.Map<GetIssueDto>(i)).ToListAsync();
+            return await _context.Issues
+                .Include(i => i.Comments)
+                .Include(i => i.User)
+                .Select(i => _mapper.Map<GetIssueDto>(i))
+                .ToListAsync();
         }
 
         [AllowAnonymous]
@@ -40,30 +44,24 @@ namespace BugTracker_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
         {
-            var issue = _mapper.Map<GetIssueDto>(await _context.Issues.Include(i => i.Comments).Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id));
-
-            if (issue == null)
-            {
-                return NotFound();
-            }
-
-            return issue;
+            return await _context.Issues
+                .Where(issue => issue.Id == id)
+                .Include(issue => issue.User)
+                .Select(issue => _mapper.Map<GetIssueDto>(issue))
+                .SingleOrDefaultAsync();
         }
 
         // PUT: api/Issues/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutIssue(long id, PutIssueDto putIssue)
         {
-            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id);
+            var issue = await _context.Issues
+                .Where(issue => issue.Id == id)
+                .Include(issue => issue.User)
+                .SingleOrDefaultAsync();
             
-            if (issue == null)
-            {
-                return BadRequest(new { message = "Issue doesn't exist." });
-            }
-            else if (GetCurrentUserId() != issue.User.Id)
-            {
-                return BadRequest(new { message = "Only the creator of an Issue can modify it." });
-            }
+            if (issue == null) return BadRequest("Issue doesn't exist.");
+            else if (_service.GetCurrentUserId() != issue.User.Id) return BadRequest("Only the creator of an Issue can modify it.");
 
             _context.Entry(_mapper.Map(putIssue, issue)).State = EntityState.Modified;
 
@@ -91,7 +89,9 @@ namespace BugTracker_API.Controllers
         public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
         {
             var issue = _mapper.Map<Issue>(postIssue);
-            issue.User = await _context.Users.FindAsync(GetCurrentUserId());
+            
+            issue.User = await _context.Users.FindAsync(_service.GetCurrentUserId());
+            
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
@@ -102,15 +102,13 @@ namespace BugTracker_API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<GetIssueDto>> DeleteIssue(long id)
         {
-            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id);
-            if (issue == null)
-            {
-                return NotFound();
-            }
-            else if (GetCurrentUserId() != issue.User.Id)
-            {
-                return BadRequest(new { message = "Only the creator of an Issue can delete it." });
-            }
+            var issue = await _context.Issues
+                .Where(issue => issue.Id == id)
+                .Include(issue => issue.User)
+                .SingleOrDefaultAsync();
+
+            if (issue == null) return NotFound("Issue not found.");
+            else if (_service.GetCurrentUserId() != issue.User.Id) return BadRequest("Only the creator of an Issue can delete it.");
 
             _context.Issues.Remove(issue);
             await _context.SaveChangesAsync();
@@ -121,11 +119,6 @@ namespace BugTracker_API.Controllers
         private bool IssueExists(long id)
         {
             return _context.Issues.Any(e => e.Id == id);
-        }
-
-        private int GetCurrentUserId()
-        {
-            return int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
     }
 }
