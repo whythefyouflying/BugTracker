@@ -4,14 +4,16 @@ using BugTracker_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BugTracker_API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200606151443_User")]
+    partial class User
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,14 +38,9 @@ namespace BugTracker_API.Migrations
                     b.Property<long>("IssueId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IssueId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -69,12 +66,7 @@ namespace BugTracker_API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Issues");
                 });
@@ -107,17 +99,6 @@ namespace BugTracker_API.Migrations
                         .HasForeignKey("IssueId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Issue", b =>
-                {
-                    b.HasOne("User", "User")
-                        .WithMany("Issues")
-                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,6 +6,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Linq;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace BugTracker_API
 {
@@ -32,6 +38,20 @@ namespace BugTracker_API
                 });
 
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.Configure<SecretKey>(Configuration.GetSection("AppSettings:Secret"));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                            .GetBytes(Configuration.GetSection("AppSettings:Secret:Key").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
             services.AddSwaggerDocument(config =>
             {
@@ -52,6 +72,18 @@ namespace BugTracker_API
                         Url = "https://github.com/tulphoon/BugTracker/blob/master/LICENSE"
                     };
                 };
+
+                config.DocumentProcessors.Add(
+                    new SecurityDefinitionAppender("JWT",
+                    new OpenApiSecurityScheme
+                    {
+                        Type = OpenApiSecuritySchemeType.ApiKey,
+                        Name = "Authorization",
+                        In = OpenApiSecurityApiKeyLocation.Header,
+                        Description = "Type into the textbox: Bearer {your JWT token}."
+                    }));
+
+                config.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
             });
         }
 
@@ -66,7 +98,7 @@ namespace BugTracker_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseOpenApi();

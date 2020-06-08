@@ -10,6 +10,7 @@ namespace BugTracker_API.Models
         public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public int Comments { get; set; }
+        public UserDto User { get; set; }
     }
 
     public class PostIssueDto

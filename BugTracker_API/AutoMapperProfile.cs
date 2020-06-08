@@ -19,6 +19,8 @@ namespace BugTracker_API
             CreateMap<Comment, GetCommentDto>();
             CreateMap<PostCommentDto, Comment>();
             CreateMap<PutCommentDto, Comment>();
+
+            CreateMap<User, UserDto>();
         }
     }
 }

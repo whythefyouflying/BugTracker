@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BugTracker_API.Controllers
 {
+    [Authorize]
     [Route("api/issues/{issueId:int}/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
@@ -24,6 +27,7 @@ namespace BugTracker_API.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         // GET: api/Comments
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long issueId)
@@ -31,10 +35,11 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comments = await _context.Comments.Include(c => c.Issue).ToListAsync();
+            var comments = await _context.Comments.Include(c => c.Issue).Include(c => c.User).ToListAsync();
             return comments.Where(c => c.Issue.Id == issueId).Select(c => _mapper.Map<GetCommentDto>(c)).ToList();
         }
 
+        [AllowAnonymous]
         // GET: api/Comments/5
         [HttpGet("{id}")]
         public async Task<ActionResult<GetCommentDto>> GetComment(long issueId, long id)
@@ -42,7 +47,7 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
 
             if (comment == null || comment.Issue.Id != issueId)
             {
@@ -61,11 +66,15 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
 
             if (comment == null || comment.Issue.Id != issueId)
             {
                 return BadRequest();
+            }
+            else if (GetCurrentUserId() != comment.User.Id)
+            {
+                return BadRequest(new { message = "Only the creator of a Comment can modify it." });
             }
 
             _context.Entry(_mapper.Map(putComment, comment)).State = EntityState.Modified;
@@ -95,7 +104,7 @@ namespace BugTracker_API.Controllers
         [HttpPost]
         public async Task<ActionResult<GetCommentDto>> PostComment(long issueId, PostCommentDto postComment)
         {
-            var issue = await _context.Issues.FindAsync(issueId);
+            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == issueId);
 
             if (issue == null)
             {
@@ -105,6 +114,7 @@ namespace BugTracker_API.Controllers
             var comment = _mapper.Map<Comment>(postComment);
 
             comment.Issue = issue;
+            comment.User = await _context.Users.FindAsync(GetCurrentUserId());
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
@@ -119,11 +129,15 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
 
             if (comment == null || comment.Issue.Id != issueId)
             {
                 return NotFound();
+            }
+            else if (GetCurrentUserId() != comment.User.Id)
+            {
+                return BadRequest(new { message = "Only the creator of a Comment can delete it." });
             }
 
             _context.Comments.Remove(comment);
@@ -140,6 +154,11 @@ namespace BugTracker_API.Controllers
         private bool IssueExists(long id)
         {
             return _context.Issues.Any(e => e.Id == id);
+        }
+
+        private int GetCurrentUserId()
+        {
+            return int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
     }
 }
