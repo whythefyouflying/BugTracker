@@ -9,5 +9,6 @@ namespace BugTracker_API.Services
     {
         public Task<Issue> GetIssueAsync(long issueId);
         public int GetCurrentUserId();
+        Task<Project> GetProjectAsync(long projectId);
     }
 }

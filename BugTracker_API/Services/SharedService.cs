@@ -31,5 +31,13 @@ namespace BugTracker_API.Services
         {
             return int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
         }
+
+        public async Task<Project> GetProjectAsync(long projectId)
+        {
+            return await _context.Projects
+                .Where(project => project.Id == projectId)
+                .Include(project => project.User)
+                .SingleOrDefaultAsync();
+        }
     }
 }
