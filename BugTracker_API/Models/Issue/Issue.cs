@@ -12,5 +12,6 @@ public class Issue
     public string Status { get; set; } = "open";
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public List<Comment> Comments { get; set; }
+    public Project Project { get; set; }
     public User User { get; set; }
 }

@@ -9,6 +9,8 @@ namespace BugTracker_API.Data
         {
         }
 
+        public DbSet<Project> Projects { get; set; }
+
         public DbSet<Issue> Issues { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
@@ -17,6 +19,11 @@ namespace BugTracker_API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Project>()
+                .HasMany(project => project.Issues)
+                .WithOne(issue => issue.Project)
+                .IsRequired();
+
             modelBuilder.Entity<Issue>()
                 .HasMany(i => i.Comments)
                 .WithOne(c => c.Issue)
