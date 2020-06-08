@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Models;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
+using BugTracker_API.Services;
 
 namespace BugTracker_API.Controllers
 {
@@ -20,11 +18,13 @@ namespace BugTracker_API.Controllers
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private readonly ISharedService _service;
 
-        public CommentsController(DataContext context, IMapper mapper)
+        public CommentsController(DataContext context, IMapper mapper, ISharedService service)
         {
             _context = context;
             _mapper = mapper;
+            _service = service;
         }
 
         [AllowAnonymous]
@@ -32,11 +32,13 @@ namespace BugTracker_API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long issueId)
         {
-            if (!IssueExists(issueId))
-                return NotFound();
+            if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
-            var comments = await _context.Comments.Include(c => c.Issue).Include(c => c.User).ToListAsync();
-            return comments.Where(c => c.Issue.Id == issueId).Select(c => _mapper.Map<GetCommentDto>(c)).ToList();
+            return await _context.Comments
+                .Where(comment => comment.Issue == issue)
+                .Include(comment => comment.User)
+                .Select(comment => _mapper.Map<GetCommentDto>(comment))
+                .ToListAsync();
         }
 
         [AllowAnonymous]
@@ -44,17 +46,17 @@ namespace BugTracker_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GetCommentDto>> GetComment(long issueId, long id)
         {
-            if (!IssueExists(issueId))
-                return NotFound();
+            //if (!(await GetProjectAsync(projectName) is Project project)) return NotFound("Project not found");
+            if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
-            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
-
-            if (comment == null || comment.Issue.Id != issueId)
-            {
-                return NotFound();
-            }
-
-            return _mapper.Map<GetCommentDto>(comment);
+            var comment = await _context.Comments
+                .Where(comment => comment.Issue == issue)
+                .Where(comment => comment.Id == id)
+                .Include(comment => comment.User)
+                .Select(comment => _mapper.Map<GetCommentDto>(comment))
+                .SingleOrDefaultAsync();
+            if (comment == null) return NotFound("Comment doesn't exist.");
+            return comment;
         }
 
         // PUT: api/Comments/5
@@ -63,19 +65,16 @@ namespace BugTracker_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutComment(long issueId, long id, PutCommentDto putComment)
         {
-            if (!IssueExists(issueId))
-                return NotFound();
+            if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
-            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments
+                .Where(comment => comment.Issue == issue)
+                .Where(comment => comment.Id == id)
+                .Include(comment => comment.User)
+                .SingleOrDefaultAsync();
 
-            if (comment == null || comment.Issue.Id != issueId)
-            {
-                return BadRequest();
-            }
-            else if (GetCurrentUserId() != comment.User.Id)
-            {
-                return BadRequest(new { message = "Only the creator of a Comment can modify it." });
-            }
+            if (comment == null) return BadRequest("Comment not found.");
+            else if (_service.GetCurrentUserId() != comment.User.Id) return BadRequest("Only the creator of a Comment can modify it.");
 
             _context.Entry(_mapper.Map(putComment, comment)).State = EntityState.Modified;
 
@@ -104,17 +103,12 @@ namespace BugTracker_API.Controllers
         [HttpPost]
         public async Task<ActionResult<GetCommentDto>> PostComment(long issueId, PostCommentDto postComment)
         {
-            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == issueId);
-
-            if (issue == null)
-            {
-                return NotFound();
-            }
+            if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
             var comment = _mapper.Map<Comment>(postComment);
 
             comment.Issue = issue;
-            comment.User = await _context.Users.FindAsync(GetCurrentUserId());
+            comment.User = await _context.Users.FindAsync(_service.GetCurrentUserId());
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
@@ -126,19 +120,16 @@ namespace BugTracker_API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<GetCommentDto>> DeleteComment(long issueId, long id)
         {
-            if (!IssueExists(issueId))
-                return NotFound();
+            if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
-            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments
+                .Where(comment => comment.Issue == issue)
+                .Where(comment => comment.Id == id)
+                .Include(comment => comment.User)
+                .SingleOrDefaultAsync();
 
-            if (comment == null || comment.Issue.Id != issueId)
-            {
-                return NotFound();
-            }
-            else if (GetCurrentUserId() != comment.User.Id)
-            {
-                return BadRequest(new { message = "Only the creator of a Comment can delete it." });
-            }
+            if (comment == null) return BadRequest("Comment not found.");
+            else if (_service.GetCurrentUserId() != comment.User.Id) return BadRequest("Only the creator of a Comment can remove it.");
 
             _context.Comments.Remove(comment);
             await _context.SaveChangesAsync();
@@ -149,16 +140,6 @@ namespace BugTracker_API.Controllers
         private bool CommentExists(long id)
         {
             return _context.Comments.Any(e => e.Id == id);
-        }
-
-        private bool IssueExists(long id)
-        {
-            return _context.Issues.Any(e => e.Id == id);
-        }
-
-        private int GetCurrentUserId()
-        {
-            return int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
     }
 }
