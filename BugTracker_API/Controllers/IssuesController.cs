@@ -98,7 +98,7 @@ namespace BugTracker_API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<GetIssueDto>> DeleteIssue(long id)
         {
-            var issue = await _context.Issues.FindAsync(id);
+            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id);
             if (issue == null)
             {
                 return NotFound();

@@ -99,7 +99,7 @@ namespace BugTracker_API.Controllers
         [HttpPost]
         public async Task<ActionResult<GetCommentDto>> PostComment(long issueId, PostCommentDto postComment)
         {
-            var issue = await _context.Issues.FindAsync(issueId);
+            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == issueId);
 
             if (issue == null)
             {
@@ -124,7 +124,7 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
 
             if (comment == null || comment.Issue.Id != issueId)
             {
