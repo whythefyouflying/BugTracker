@@ -34,7 +34,7 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comments = await _context.Comments.Include(c => c.Issue).ToListAsync();
+            var comments = await _context.Comments.Include(c => c.Issue).Include(c => c.User).ToListAsync();
             return comments.Where(c => c.Issue.Id == issueId).Select(c => _mapper.Map<GetCommentDto>(c)).ToList();
         }
 
@@ -46,7 +46,7 @@ namespace BugTracker_API.Controllers
             if (!IssueExists(issueId))
                 return NotFound();
 
-            var comment = await _context.Comments.Include(c => c.Issue).SingleOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(c => c.Issue).Include(c => c.User).SingleOrDefaultAsync(c => c.Id == id);
 
             if (comment == null || comment.Issue.Id != issueId)
             {
@@ -109,6 +109,7 @@ namespace BugTracker_API.Controllers
             var comment = _mapper.Map<Comment>(postComment);
 
             comment.Issue = issue;
+            comment.User = await _context.Users.FindAsync(issue.User.Id);
 
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();

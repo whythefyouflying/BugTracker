@@ -25,29 +25,30 @@ public class AuthRepository : IAuthRepository
 
     public async Task<string> Login(string username, string password)
     {
-        if (string.IsNullOrWhiteSpace(password))
-            throw new AppException("Password is required");
+        if (string.IsNullOrWhiteSpace(username))
+            throw new AppException("Username is required.");
+        else if (string.IsNullOrWhiteSpace(password))
+            throw new AppException("Password is required.");
 
         User user = await _context.Users.FirstOrDefaultAsync(x => x.Username.ToLower().Equals(username.ToLower()));
         if (user == null)
-        {
-            throw new AppException("Username '" + username + "' doesn't exist");
-        }
+            throw new AppException("Username '" + username + "' doesn't exist.");
         else if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) 
-        {
             throw new AppException("Incorrect password.");
-        }
 
         return CreateToken(user);
     }
 
     public async Task<int> Register(User user, string password)
     {
+        if (string.IsNullOrWhiteSpace(user.Username))
+            throw new AppException("Username is required.");
+        else if (string.IsNullOrWhiteSpace(password))
+            throw new AppException("Password is required.");
+
         if (await UserExists(user.Username))
-        {
-            // TODO: make this throw an AppException for example
-            return 0;
-        }
+            throw new AppException("Username '" + user.Username + "' already exists.");
+
         CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
         user.PasswordHash = passwordHash;
@@ -69,27 +70,23 @@ public class AuthRepository : IAuthRepository
 
     private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
-        using (var hmac = new System.Security.Cryptography.HMACSHA512())
-        {
-            passwordSalt = hmac.Key;
-            passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-        }
+        using var hmac = new System.Security.Cryptography.HMACSHA512();
+        passwordSalt = hmac.Key;
+        passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
     }
 
     private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
     {
-        using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+        using var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt);
+        var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        for (int i = 0; i < computedHash.Length; i++)
         {
-            var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            for (int i = 0; i < computedHash.Length; i++)
+            if (computedHash[i] != passwordHash[i])
             {
-                if (computedHash[i] != passwordHash[i])
-                {
-                    return false;
-                }
+                return false;
             }
-            return true;
         }
+        return true;
     }
 
     private string CreateToken(User user)

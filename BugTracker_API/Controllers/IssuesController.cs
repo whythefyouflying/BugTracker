@@ -91,7 +91,7 @@ namespace BugTracker_API.Controllers
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIssue", new { id = issue.Id }, issue);
+            return CreatedAtAction("GetIssue", new { id = issue.Id }, _mapper.Map<GetIssueDto>(issue));
         }
 
         // DELETE: api/Issues/5

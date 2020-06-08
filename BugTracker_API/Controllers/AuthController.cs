@@ -24,12 +24,13 @@ namespace BugTracker_API.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserRegisterDto request)
         {
-            var id = await _authRepo.Register(new User { Username = request.Username }, request.Password);
-            if (id < 1)
+            try
             {
-                return BadRequest();
+                return Ok(new { id = await _authRepo.Register(new User { Username = request.Username }, request.Password) });
+            } catch (AppException ex)
+            {
+                return BadRequest(new { message = ex.Message });
             }
-            return Ok();
         }
 
         [HttpPost("Login")]
@@ -37,7 +38,7 @@ namespace BugTracker_API.Controllers
         {
             try
             {
-                return Ok(await _authRepo.Login(request.Username, request.Password));
+                return Ok(new { token = await _authRepo.Login(request.Username, request.Password) });
             } catch (AppException ex)
             {
                 return BadRequest(new { message = ex.Message });
