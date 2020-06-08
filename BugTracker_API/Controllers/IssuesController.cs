@@ -54,11 +54,15 @@ namespace BugTracker_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutIssue(long id, PutIssueDto putIssue)
         {
-            var issue = await _context.Issues.FindAsync(id);
+            var issue = await _context.Issues.Include(i => i.User).SingleOrDefaultAsync(i => i.Id == id);
             
             if (issue == null)
             {
-                return BadRequest();
+                return BadRequest(new { message = "Issue doesn't exist." });
+            }
+            else if (GetCurrentUserId() != issue.User.Id)
+            {
+                return BadRequest(new { message = "Only the creator of an Issue can modify it." });
             }
 
             _context.Entry(_mapper.Map(putIssue, issue)).State = EntityState.Modified;
@@ -87,7 +91,7 @@ namespace BugTracker_API.Controllers
         public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
         {
             var issue = _mapper.Map<Issue>(postIssue);
-            issue.User = await _context.Users.FindAsync(int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value));
+            issue.User = await _context.Users.FindAsync(GetCurrentUserId());
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
@@ -103,6 +107,10 @@ namespace BugTracker_API.Controllers
             {
                 return NotFound();
             }
+            else if (GetCurrentUserId() != issue.User.Id)
+            {
+                return BadRequest(new { message = "Only the creator of an Issue can delete it." });
+            }
 
             _context.Issues.Remove(issue);
             await _context.SaveChangesAsync();
@@ -113,6 +121,11 @@ namespace BugTracker_API.Controllers
         private bool IssueExists(long id)
         {
             return _context.Issues.Any(e => e.Id == id);
+        }
+
+        private int GetCurrentUserId()
+        {
+            return int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
         }
     }
 }
