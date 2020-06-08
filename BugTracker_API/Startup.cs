@@ -12,6 +12,8 @@ using System.Text;
 using System.Linq;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Microsoft.AspNetCore.Http;
+using BugTracker_API.Services;
 
 namespace BugTracker_API
 {
@@ -39,6 +41,8 @@ namespace BugTracker_API
 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ISharedService, SharedService>();
             services.Configure<SecretKey>(Configuration.GetSection("AppSettings:Secret"));
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

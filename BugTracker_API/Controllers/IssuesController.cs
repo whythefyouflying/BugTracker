@@ -44,11 +44,14 @@ namespace BugTracker_API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
         {
-            return await _context.Issues
+            var issue = await _context.Issues
                 .Where(issue => issue.Id == id)
                 .Include(issue => issue.User)
                 .Select(issue => _mapper.Map<GetIssueDto>(issue))
                 .SingleOrDefaultAsync();
+
+            if (issue == null) return NotFound("Issue doesn't exist.");
+            return issue;
         }
 
         // PUT: api/Issues/5

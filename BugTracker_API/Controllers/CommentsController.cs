@@ -49,12 +49,14 @@ namespace BugTracker_API.Controllers
             //if (!(await GetProjectAsync(projectName) is Project project)) return NotFound("Project not found");
             if (!(await _service.GetIssueAsync(issueId) is Issue issue)) return NotFound("Issue not found");
 
-            return await _context.Comments
+            var comment = await _context.Comments
                 .Where(comment => comment.Issue == issue)
                 .Where(comment => comment.Id == id)
                 .Include(comment => comment.User)
                 .Select(comment => _mapper.Map<GetCommentDto>(comment))
                 .SingleOrDefaultAsync();
+            if (comment == null) return NotFound("Comment doesn't exist.");
+            return comment;
         }
 
         // PUT: api/Comments/5
