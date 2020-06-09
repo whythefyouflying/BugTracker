@@ -12,7 +12,7 @@ using BugTracker_API.Services;
 namespace BugTracker_API.Controllers
 {
     [Authorize]
-    [Route("api/projects/{projectId:int}/issues/{issueId:int}/[controller]")]
+    [Route("api/projects/{projectId:int}/issues/{issueNumber:int}/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
     {
@@ -30,10 +30,10 @@ namespace BugTracker_API.Controllers
         [AllowAnonymous]
         // GET: api/Comments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long projectId, long issueId)
+        public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long projectId, int issueNumber)
         {
             if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
-            if (!(await _service.GetIssueAsync(project, issueId) is Issue issue)) return NotFound("Issue not found.");
+            if (!(await _service.GetIssueAsync(project, issueNumber) is Issue issue)) return NotFound("Issue not found.");
 
             return await _context.Comments
                 .Where(comment => comment.Issue == issue)
@@ -45,10 +45,10 @@ namespace BugTracker_API.Controllers
         [AllowAnonymous]
         // GET: api/Comments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetCommentDto>> GetComment(long projectId, long issueId, long id)
+        public async Task<ActionResult<GetCommentDto>> GetComment(long projectId, int issueNumber, long id)
         {
             if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
-            if (!(await _service.GetIssueAsync(project, issueId) is Issue issue)) return NotFound("Issue not found.");
+            if (!(await _service.GetIssueAsync(project, issueNumber) is Issue issue)) return NotFound("Issue not found.");
 
             var comment = await _context.Comments
                 .Where(comment => comment.Issue == issue)
@@ -64,10 +64,10 @@ namespace BugTracker_API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutComment(long projectId, long issueId, long id, PutCommentDto putComment)
+        public async Task<IActionResult> PutComment(long projectId, int issueNumber, long id, PutCommentDto putComment)
         {
             if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
-            if (!(await _service.GetIssueAsync(project, issueId) is Issue issue)) return NotFound("Issue not found");
+            if (!(await _service.GetIssueAsync(project, issueNumber) is Issue issue)) return NotFound("Issue not found");
 
             var comment = await _context.Comments
                 .Where(comment => comment.Issue == issue)
@@ -103,10 +103,10 @@ namespace BugTracker_API.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<GetCommentDto>> PostComment(long projectId, long issueId, PostCommentDto postComment)
+        public async Task<ActionResult<GetCommentDto>> PostComment(long projectId, int issueNumber, PostCommentDto postComment)
         {
             if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
-            if (!(await _service.GetIssueAsync(project, issueId) is Issue issue)) return NotFound("Issue not found");
+            if (!(await _service.GetIssueAsync(project, issueNumber) is Issue issue)) return NotFound("Issue not found");
 
             var comment = _mapper.Map<Comment>(postComment);
 
@@ -116,15 +116,15 @@ namespace BugTracker_API.Controllers
             _context.Comments.Add(comment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetComment", new { id = comment.Id, issueId, projectId }, _mapper.Map<GetCommentDto>(comment));
+            return CreatedAtAction("GetComment", new { id = comment.Id, issueNumber, projectId }, _mapper.Map<GetCommentDto>(comment));
         }
 
         // DELETE: api/Comments/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<GetCommentDto>> DeleteComment(long projectId, long issueId, long id)
+        public async Task<ActionResult<GetCommentDto>> DeleteComment(long projectId, int issueNumber, long id)
         {
             if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
-            if (!(await _service.GetIssueAsync(project, issueId) is Issue issue)) return NotFound("Issue not found");
+            if (!(await _service.GetIssueAsync(project, issueNumber) is Issue issue)) return NotFound("Issue not found");
 
             var comment = await _context.Comments
                 .Where(comment => comment.Issue == issue)

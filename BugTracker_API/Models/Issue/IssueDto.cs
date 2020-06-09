@@ -5,6 +5,7 @@ namespace BugTracker_API.Models
     public class GetIssueDto
     {
         public long Id { get; set; }
+        public int Number { get; set; }
         public string Title { get; set; }
         public string Body { get; set; }
         public string Status { get; set; }

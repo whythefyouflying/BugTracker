@@ -19,11 +19,11 @@ namespace BugTracker_API.Services
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<Issue> GetIssueAsync(Project project, long issueId)
+        public async Task<Issue> GetIssueAsync(Project project, int issueNumber)
         {
             return await _context.Issues
                 .Where(issue => issue.Project == project)
-                .Where(issue => issue.Id == issueId)
+                .Where(issue => issue.Number == issueNumber)
                 .Include(issue => issue.User)
                 .SingleOrDefaultAsync();
         }
