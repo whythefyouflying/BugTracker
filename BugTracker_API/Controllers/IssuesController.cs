@@ -106,6 +106,10 @@ namespace BugTracker_API.Controllers
             var issue = _mapper.Map<Issue>(postIssue);
 
             issue.Project = project;
+            issue.Number = await _context.Issues
+                .Where(issue => issue.Project == project)
+                .IgnoreQueryFilters()
+                .CountAsync() + 1;
             issue.User = await _context.Users.FindAsync(_service.GetCurrentUserId());
             
             _context.Issues.Add(issue);
