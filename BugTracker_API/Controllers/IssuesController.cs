@@ -12,7 +12,7 @@ using BugTracker_API.Services;
 namespace BugTracker_API.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/projects/{projectId:int}/[controller]")]
     [ApiController]
     public class IssuesController : ControllerBase
     {
@@ -30,9 +30,12 @@ namespace BugTracker_API.Controllers
         [AllowAnonymous]
         // GET: api/Issues
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues()
+        public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues(long projectId)
         {
+            if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
+            
             return await _context.Issues
+                .Where(issue => issue.Project == project)
                 .Include(i => i.Comments)
                 .Include(i => i.User)
                 .Select(i => _mapper.Map<GetIssueDto>(i))
@@ -42,10 +45,14 @@ namespace BugTracker_API.Controllers
         [AllowAnonymous]
         // GET: api/Issues/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<GetIssueDto>> GetIssue(long id)
+        public async Task<ActionResult<GetIssueDto>> GetIssue(long projectId, long id)
         {
+            if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
+
             var issue = await _context.Issues
+                .Where(issue => issue.Project == project)
                 .Where(issue => issue.Id == id)
+                .Include(issue => issue.Comments)
                 .Include(issue => issue.User)
                 .Select(issue => _mapper.Map<GetIssueDto>(issue))
                 .SingleOrDefaultAsync();
@@ -56,9 +63,12 @@ namespace BugTracker_API.Controllers
 
         // PUT: api/Issues/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutIssue(long id, PutIssueDto putIssue)
+        public async Task<IActionResult> PutIssue(long projectId, long id, PutIssueDto putIssue)
         {
+            if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
+
             var issue = await _context.Issues
+                .Where(issue => issue.Project == project)
                 .Where(issue => issue.Id == id)
                 .Include(issue => issue.User)
                 .SingleOrDefaultAsync();
@@ -89,23 +99,29 @@ namespace BugTracker_API.Controllers
 
         // POST: api/Issues
         [HttpPost]
-        public async Task<ActionResult<GetIssueDto>> PostIssue(PostIssueDto postIssue)
+        public async Task<ActionResult<GetIssueDto>> PostIssue(long projectId, PostIssueDto postIssue)
         {
+            if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
+
             var issue = _mapper.Map<Issue>(postIssue);
-            
+
+            issue.Project = project;
             issue.User = await _context.Users.FindAsync(_service.GetCurrentUserId());
             
             _context.Issues.Add(issue);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetIssue", new { id = issue.Id }, _mapper.Map<GetIssueDto>(issue));
+            return CreatedAtAction("GetIssue", new { id = issue.Id, projectId }, _mapper.Map<GetIssueDto>(issue));
         }
 
         // DELETE: api/Issues/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<GetIssueDto>> DeleteIssue(long id)
+        public async Task<ActionResult<GetIssueDto>> DeleteIssue(long projectId, long id)
         {
+            if (!(await _service.GetProjectAsync(projectId) is Project project)) return NotFound("Project not found.");
+
             var issue = await _context.Issues
+                .Where(issue => issue.Project == project)
                 .Where(issue => issue.Id == id)
                 .Include(issue => issue.User)
                 .SingleOrDefaultAsync();

@@ -19,9 +19,10 @@ namespace BugTracker_API.Services
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
-        public async Task<Issue> GetIssueAsync(long issueId)
+        public async Task<Issue> GetIssueAsync(Project project, long issueId)
         {
             return await _context.Issues
+                .Where(issue => issue.Project == project)
                 .Where(issue => issue.Id == issueId)
                 .Include(issue => issue.User)
                 .SingleOrDefaultAsync();
@@ -30,6 +31,14 @@ namespace BugTracker_API.Services
         public int GetCurrentUserId()
         {
             return int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+        }
+
+        public async Task<Project> GetProjectAsync(long projectId)
+        {
+            return await _context.Projects
+                .Where(project => project.Id == projectId)
+                .Include(project => project.User)
+                .SingleOrDefaultAsync();
         }
     }
 }
