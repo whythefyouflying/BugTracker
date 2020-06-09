@@ -7,7 +7,7 @@ namespace BugTracker_API.Services
 {
     public interface ISharedService
     {
-        public Task<Issue> GetIssueAsync(Project project, long issueId);
+        public Task<Issue> GetIssueAsync(Project project, int issueNumber);
         public int GetCurrentUserId();
         Task<Project> GetProjectAsync(long projectId);
     }
