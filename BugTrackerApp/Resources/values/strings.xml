@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BugTracker</string>
+    <string name="action_settings">Settings</string>
+</resources>
