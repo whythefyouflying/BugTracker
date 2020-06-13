@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using BugTrackerApp.Models;
-using Java.Lang;
 using Refit;
 
 namespace BugTrackerApp.Services
@@ -13,5 +13,8 @@ namespace BugTrackerApp.Services
 
         [Post("/auth/register")]
         Task<AuthId> PostRegister([Body] AuthAccountDetails registerDetails);
+
+        [Get("/projects")]
+        Task<List<Project>> GetProjects();
     }
 }

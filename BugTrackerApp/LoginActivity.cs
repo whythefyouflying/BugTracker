@@ -8,6 +8,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
 using BugTrackerApp.Models;
 using BugTrackerApp.Services;
@@ -16,10 +17,10 @@ using Xamarin.Essentials;
 
 namespace BugTrackerApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, WindowSoftInputMode = SoftInput.AdjustResize)]
     public class LoginActivity : AppCompatActivity
     {
-        IApiService apiService = ApiService.GetApiService();
+        private readonly IApiService apiService = ApiService.GetApiService();
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
