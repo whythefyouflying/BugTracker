@@ -21,11 +21,29 @@ namespace BugTrackerApp
     {
         IApiService apiService = ApiService.GetApiService();
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_login);
+
+            // If token is already present, proceed to MainActivity
+            try
+            {
+                var token = await SecureStorage.GetAsync("jwt_token");
+                if (token != null)
+                {
+                    var intent = new Intent(this, typeof(MainActivity));
+                    intent.PutExtra("jwt_token", token);
+                    StartActivity(intent);
+                    Finish();
+                }
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+            }
+
 
             // Create your application here
             EditText usernameText = FindViewById<EditText>(Resource.Id.usernameText);

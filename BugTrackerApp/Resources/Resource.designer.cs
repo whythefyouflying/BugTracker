@@ -3515,22 +3515,22 @@ namespace BugTrackerApp
 			public const int action_image = 2131230769;
 			
 			// aapt resource value: 0x7F080032
-			public const int action_menu_divider = 2131230770;
+			public const int action_logout = 2131230770;
 			
 			// aapt resource value: 0x7F080033
-			public const int action_menu_presenter = 2131230771;
+			public const int action_menu_divider = 2131230771;
 			
 			// aapt resource value: 0x7F080034
-			public const int action_mode_bar = 2131230772;
+			public const int action_menu_presenter = 2131230772;
 			
 			// aapt resource value: 0x7F080035
-			public const int action_mode_bar_stub = 2131230773;
+			public const int action_mode_bar = 2131230773;
 			
 			// aapt resource value: 0x7F080036
-			public const int action_mode_close_button = 2131230774;
+			public const int action_mode_bar_stub = 2131230774;
 			
 			// aapt resource value: 0x7F080037
-			public const int action_settings = 2131230775;
+			public const int action_mode_close_button = 2131230775;
 			
 			// aapt resource value: 0x7F080038
 			public const int action_text = 2131230776;
@@ -4526,7 +4526,7 @@ namespace BugTrackerApp
 			public const int abc_toolbar_collapse_description = 2131623962;
 			
 			// aapt resource value: 0x7F0E001B
-			public const int action_settings = 2131623963;
+			public const int action_logout = 2131623963;
 			
 			// aapt resource value: 0x7F0E001D
 			public const int appbar_scrolling_view_behavior = 2131623965;

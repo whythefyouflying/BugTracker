@@ -8,6 +8,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Xamarin.Essentials;
 
 namespace BugTrackerApp
 {
@@ -33,8 +34,12 @@ namespace BugTrackerApp
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            if (id == Resource.Id.action_settings)
+            if (id == Resource.Id.action_logout)
             {
+                SecureStorage.Remove("jwt_token");
+                var intent = new Intent(this, typeof(LoginActivity));
+                StartActivity(intent);
+                Finish();
                 return true;
             }
 
