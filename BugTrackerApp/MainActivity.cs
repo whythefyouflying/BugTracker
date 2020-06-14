@@ -17,6 +17,7 @@ using Android.Webkit;
 using AndroidX.SwipeRefreshLayout.Widget;
 using Android.Graphics;
 using System.Threading.Tasks;
+using Google.Android.Material.FloatingActionButton;
 
 namespace BugTrackerApp
 {
@@ -82,6 +83,15 @@ namespace BugTrackerApp
             
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
+
+            Google.Android.Material.FloatingActionButton.FloatingActionButton fab = FindViewById<Google.Android.Material.FloatingActionButton.FloatingActionButton>(Resource.Id.addProjectFab);
+
+            fab.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(CreateProjectActivity));
+                intent.PutExtra("jwt_token", authToken);
+                StartActivity(intent);
+            };
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -107,7 +117,7 @@ namespace BugTrackerApp
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

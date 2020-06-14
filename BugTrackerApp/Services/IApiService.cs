@@ -16,5 +16,8 @@ namespace BugTrackerApp.Services
 
         [Get("/projects")]
         Task<List<Project>> GetProjects();
+
+        [Post("/projects")]
+        Task<Project> PostProjects([Body] PostProject projectDetails, [Header("Authorization")] string bearerToken);
     }
 }

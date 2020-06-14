@@ -11,4 +11,10 @@ namespace BugTrackerApp.Models
         public int Issues { get; set; }
         public User User { get; set; }
     }
+
+    public class PostProject
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+    }
 }

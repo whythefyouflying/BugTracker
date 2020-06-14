@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BugTracker</string>
     <string name="action_logout">Logout</string>
+	<string name="create_project">Create Project</string>
+	<string name="action_createproject">Create</string>
+	<string name="add_project_title">Add title</string>
+	<string name="add_project_description">Description (optional)</string>
 </resources>
