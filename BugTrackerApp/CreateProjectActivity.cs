@@ -9,6 +9,7 @@ using Android.Content;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
@@ -26,6 +27,7 @@ namespace BugTrackerApp
     {
         private readonly IApiService apiService = ApiService.GetApiService();
         private string authToken;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -47,7 +49,6 @@ namespace BugTrackerApp
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
             EditText projectTitle = FindViewById<EditText>(Resource.Id.projectTitleEditText);
-            EditText projectDescription = FindViewById<EditText>(Resource.Id.projectDescriptionEditText);
 
             _ = projectTitle.RequestFocus();
         }
@@ -75,6 +76,12 @@ namespace BugTrackerApp
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutString("jwt_token", authToken);
+            base.OnSaveInstanceState(outState);
         }
     }
 }
