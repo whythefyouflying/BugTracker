@@ -13,12 +13,18 @@ using Org.Apache.Http.Authentication;
 using BugTrackerApp.Services;
 using BugTrackerApp.Models;
 using AndroidX.RecyclerView.Widget;
+using Android.Webkit;
+using AndroidX.SwipeRefreshLayout.Widget;
+using Android.Graphics;
+using System.Threading.Tasks;
 
 namespace BugTrackerApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar")]
     public class MainActivity : AppCompatActivity
     {
+        private SwipeRefreshLayout mProjectsSwipeContainer;
+
         RecyclerView mProjectsView;
         RecyclerView.LayoutManager mLayoutManager;
         ProjectsListAdapter mAdapter;
@@ -41,16 +47,31 @@ namespace BugTrackerApp
                 authToken = Intent.GetStringExtra("jwt_token");
             }
 
-            try
-            {
-                mProjectsList = await apiService.GetProjects();
-            }
-            catch (Exception ex)
-            {
-                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
-            }
+            mProjectsList = await getProjects();
 
             SetContentView(Resource.Layout.activity_main);
+
+            mProjectsSwipeContainer = FindViewById<SwipeRefreshLayout>(Resource.Id.projectsSwipeContainer);
+            mProjectsSwipeContainer.SetColorSchemeResources(Android.Resource.Color.HoloBlueBright,
+                Android.Resource.Color.HoloGreenLight,
+                Android.Resource.Color.HoloOrangeLight,
+                Android.Resource.Color.HoloRedLight);
+
+            mProjectsSwipeContainer.Refresh += async delegate
+            {
+                var refreshedProjects = await getProjects();
+                if (refreshedProjects != null)
+                {
+                    mAdapter.clear();
+                    mAdapter.addAll(refreshedProjects);
+                }
+                else
+                {
+                    Toast.MakeText(Application.Context, "Couldn't refresh", ToastLength.Short).Show();
+                }
+                mProjectsSwipeContainer.Refreshing = false;
+            };
+
             mProjectsView = FindViewById<RecyclerView>(Resource.Id.projectsView);
 
             mLayoutManager = new LinearLayoutManager(this);
@@ -101,6 +122,19 @@ namespace BugTrackerApp
             outState.PutString("jwt_token", authToken);
             base.OnSaveInstanceState(outState);
         }
+
+        private async Task<List<Project>> getProjects()
+        {
+            try
+            {
+                return await apiService.GetProjects();
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+                return null;
+            }
+        }
     }
 
     public class ProjectViewHolder : RecyclerView.ViewHolder
@@ -145,6 +179,18 @@ namespace BugTrackerApp
         public override int ItemCount
         {
             get { return mProjectsList.Count;  }
+        }
+
+        public void clear()
+        {
+            mProjectsList.Clear();
+            NotifyDataSetChanged();
+        }
+
+        public void addAll(List<Project> projects)
+        {
+            mProjectsList.AddRange(projects);
+            NotifyDataSetChanged();
         }
     }
 }
