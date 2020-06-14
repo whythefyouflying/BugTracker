@@ -21,7 +21,7 @@ using Google.Android.Material.FloatingActionButton;
 
 namespace BugTrackerApp
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar")]
+    [Activity(Label = "@string/projects", Theme = "@style/AppTheme.NoActionBar")]
     public class MainActivity : AppCompatActivity
     {
         private SwipeRefreshLayout mProjectsSwipeContainer;
@@ -79,6 +79,7 @@ namespace BugTrackerApp
             mProjectsView.SetLayoutManager(mLayoutManager);
 
             mAdapter = new ProjectsListAdapter(mProjectsList);
+            mAdapter.ItemClick += OnItemClick;
             mProjectsView.SetAdapter(mAdapter);
             
             Android.Support.V7.Widget.Toolbar toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
@@ -133,6 +134,15 @@ namespace BugTrackerApp
             base.OnSaveInstanceState(outState);
         }
 
+        void OnItemClick(object sender, int position)
+        {
+            Project project = mAdapter.mProjectsList[position];
+            var intent = new Intent(this, typeof(ProjectActivity));
+            intent.PutExtra("jwt_token", authToken);
+            StartActivity(intent);
+            Toast.MakeText(this, "This is project: " + project.Title.ToString(), ToastLength.Short).Show();
+        }
+
         private async Task<List<Project>> getProjects()
         {
             try
@@ -152,16 +162,20 @@ namespace BugTrackerApp
         public TextView Title { get; set; }
         public TextView Description { get; set; }
 
-        public ProjectViewHolder (View itemView) : base (itemView)
+        public ProjectViewHolder (View itemView, Action<int> listener)
+            : base (itemView)
         {
             Title = itemView.FindViewById<TextView>(Resource.Id.projectTitleTextView);
             Description = itemView.FindViewById<TextView>(Resource.Id.projectDescriptionTextView);
+
+            itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }
     }
 
     public class ProjectsListAdapter : RecyclerView.Adapter
     {
         public List<Project> mProjectsList;
+        public event EventHandler<int> ItemClick;
 
         public ProjectsListAdapter (List<Project> projectsList)
         {
@@ -173,7 +187,7 @@ namespace BugTrackerApp
             View itemView = LayoutInflater.From(parent.Context).
                 Inflate(Resource.Layout.project_card_view, parent, false);
 
-            ProjectViewHolder vh = new ProjectViewHolder(itemView);
+            ProjectViewHolder vh = new ProjectViewHolder(itemView, OnClick);
             return vh;
         }
 
@@ -189,6 +203,12 @@ namespace BugTrackerApp
         public override int ItemCount
         {
             get { return mProjectsList.Count;  }
+        }
+
+        void OnClick(int position)
+        {
+            if (ItemClick != null)
+                ItemClick(this, position);
         }
 
         public void clear()
