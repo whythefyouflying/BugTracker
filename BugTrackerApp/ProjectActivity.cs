@@ -32,6 +32,7 @@ namespace BugTrackerApp
             if (savedInstanceState != null)
             {
                 authToken = savedInstanceState.GetString("jwt_token", null);
+                projectId = savedInstanceState.GetLong("project_id");
             }
             else
             {
@@ -48,12 +49,39 @@ namespace BugTrackerApp
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             Title = " ";
 
-            Project project = await GetProject(projectId);
-            TextView projectTitle = FindViewById<TextView>(Resource.Id.projectTitleTextView);
-            TextView projectDescription = FindViewById<TextView>(Resource.Id.projectDescriptionTextView);
+            Project project;
+            try
+            {
+                project = await GetProject(projectId);
+                TextView projectOwner = FindViewById<TextView>(Resource.Id.projectOwnerTextView);
+                TextView projectTitle = FindViewById<TextView>(Resource.Id.projectTitleTextView);
+                TextView projectDescription = FindViewById<TextView>(Resource.Id.projectDescriptionTextView);
+                TextView projectIssuesCount = FindViewById<TextView>(Resource.Id.projectIssuesCount);
+                LinearLayout projectIssuesButton = FindViewById<LinearLayout>(Resource.Id.projectIssuesButton);
 
-            projectTitle.Text = project.Title;
-            projectDescription.Text = project.Description;
+                projectOwner.Text = project.User.Username;
+                projectTitle.Text = project.Title;
+                projectDescription.Text = project.Description;
+                projectIssuesCount.Text = project.Issues.ToString();
+
+
+                projectIssuesButton.Click += (sender, e) =>
+                {
+                    var intent = new Intent(this, typeof(IssuesActivity));
+                    intent.PutExtra("jwt_token", authToken);
+                    intent.PutExtra("project_id", project.Id);
+                    StartActivity(intent);
+                };
+            }
+            catch (ApiException ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+            }
+
         }
 
         private async Task<Project> GetProject(long projectId)
@@ -74,6 +102,25 @@ namespace BugTrackerApp
                 Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
                 return null;
             }
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            outState.PutString("jwt_token", authToken);
+            outState.PutLong("project_id", projectId);
+            base.OnSaveInstanceState(outState);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            int id = item.ItemId;
+            if (id == Android.Resource.Id.Home)
+            {
+                Finish();
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

@@ -6,4 +6,5 @@
 	<string name="action_createproject">Create</string>
 	<string name="add_project_title">Add title</string>
 	<string name="add_project_description">Description (optional)</string>
+	<string name="project_issues">Issues</string>
 </resources>

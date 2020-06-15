@@ -66,6 +66,10 @@ namespace BugTrackerApp
             {
                 CreateProject();
                 return true;
+            } else if (id == Android.Resource.Id.Home)
+            {
+                Finish();
+                return true;
             }
 
             return base.OnOptionsItemSelected(item);
