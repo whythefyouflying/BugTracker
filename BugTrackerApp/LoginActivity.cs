@@ -58,10 +58,10 @@ namespace BugTrackerApp
                 try
                 {
                     var response = await apiService.PostLogin(new AuthAccountDetails { Username = usernameText.Text, Password = passwordText.Text });
-                    await SecureStorage.SetAsync("jwt_token", response.Token);
+                    var token = $"Bearer {response.Token}";
+                    await SecureStorage.SetAsync("jwt_token", token);
 
                     var intent = new Intent(this, typeof(MainActivity));
-                    var token = $"Bearer {response.Token}";
                     intent.PutExtra("jwt_token", token);
                     StartActivity(intent);
                     Finish();
