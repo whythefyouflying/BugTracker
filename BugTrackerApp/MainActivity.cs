@@ -139,8 +139,8 @@ namespace BugTrackerApp
             Project project = mAdapter.mProjectsList[position];
             var intent = new Intent(this, typeof(ProjectActivity));
             intent.PutExtra("jwt_token", authToken);
+            intent.PutExtra("project_id", project.Id);
             StartActivity(intent);
-            Toast.MakeText(this, "This is project: " + project.Title.ToString(), ToastLength.Short).Show();
         }
 
         private async Task<List<Project>> getProjects()
@@ -165,8 +165,8 @@ namespace BugTrackerApp
         public ProjectViewHolder (View itemView, Action<int> listener)
             : base (itemView)
         {
-            Title = itemView.FindViewById<TextView>(Resource.Id.projectTitleTextView);
-            Description = itemView.FindViewById<TextView>(Resource.Id.projectDescriptionTextView);
+            Title = itemView.FindViewById<TextView>(Resource.Id.projectCardTitleTextView);
+            Description = itemView.FindViewById<TextView>(Resource.Id.projectCardDescriptionTextView);
 
             itemView.Click += (sender, e) => listener(base.LayoutPosition);
         }

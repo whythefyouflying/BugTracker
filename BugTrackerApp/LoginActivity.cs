@@ -61,7 +61,8 @@ namespace BugTrackerApp
                     await SecureStorage.SetAsync("jwt_token", response.Token);
 
                     var intent = new Intent(this, typeof(MainActivity));
-                    intent.PutExtra("jwt_token", response.Token);
+                    var token = $"Bearer {response.Token}";
+                    intent.PutExtra("jwt_token", token);
                     StartActivity(intent);
                     Finish();
                 } 

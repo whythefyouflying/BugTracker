@@ -48,7 +48,7 @@ namespace BugTrackerApp
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            EditText projectTitle = FindViewById<EditText>(Resource.Id.projectTitleEditText);
+            EditText projectTitle = FindViewById<EditText>(Resource.Id.createProjectTitleEditText);
 
             _ = projectTitle.RequestFocus();
         }
@@ -59,16 +59,39 @@ namespace BugTrackerApp
             return true;
         }
 
-        // TODO: Implement Android Service for calling API
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
             if (id == Resource.Id.action_createproject)
             {
+                CreateProject();
                 return true;
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        private void CreateProject()
+        {
+            EditText projectTitle = FindViewById<EditText>(Resource.Id.createProjectTitleEditText);
+            EditText projectDescription = FindViewById<EditText>(Resource.Id.createProjectDescriptionEditText);
+            apiService.PostProject(new PostProject { Title = projectTitle.Text, Description = projectDescription.Text }, authToken)
+                .ContinueWithSuccess(project => {
+                    var intent = new Intent(this, typeof(ProjectActivity));
+                    intent.PutExtra("jwt_token", authToken);
+                    intent.PutExtra("project_id", project.Id);
+                    StartActivity(intent);
+                })
+                .ContinueWithFailure(ex =>
+                {
+                    /*if(ex.InnerException is ApiException apiEx)
+                    {
+                        var statusCode = apiEx.StatusCode;
+                        var error = apiEx.GetContentAs<ErrorResponse>();
+                        RunOnUiThread(() => Toast.MakeText(context, error?.Message ?? "XD", ToastLength.Long).Show());
+                    }*/
+                    RunOnUiThread(() => Toast.MakeText(Application.Context, ex.Message, ToastLength.Long).Show());
+                });
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

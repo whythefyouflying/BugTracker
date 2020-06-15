@@ -24,13 +24,13 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:hint="@string/add_project_title"
-        android:id="@+id/projectTitleEditText" />
+        android:id="@+id/createProjectTitleEditText" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/add_project_description"
-        android:id="@+id/projectDescriptionEditText"
+        android:id="@+id/createProjectDescriptionEditText"
         android:inputType="text" />
 
 

@@ -15,10 +15,10 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/projectTitleTextView"/>
+            android:id="@+id/projectCardTitleTextView"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/projectDescriptionTextView"/>
+            android:id="@+id/projectCardDescriptionTextView"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
