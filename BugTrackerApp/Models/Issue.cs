@@ -13,4 +13,10 @@ namespace BugTrackerApp.Models
         public int Comments { get; set; }
         public User User { get; set; }
     }
+
+    public class PostIssue
+    {
+        public string Title { get; set; }
+        public string Body { get; set; }
+    }
 }

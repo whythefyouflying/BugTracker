@@ -7,4 +7,6 @@
 	<string name="add_project_title">Add title</string>
 	<string name="add_project_description">Description (optional)</string>
 	<string name="project_issues">Issues</string>
+	<string name="create_issue">Create Issue</string>
+	<string name="action_createissue">Create Issue</string>
 </resources>

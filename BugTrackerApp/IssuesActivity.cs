@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using Android.App;
@@ -11,6 +12,8 @@ using Android.Text.Format;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.AppCompat.Widget;
+using AndroidX.Core.View;
 using AndroidX.RecyclerView.Widget;
 using AndroidX.SwipeRefreshLayout.Widget;
 using BugTrackerApp.Models;
@@ -33,6 +36,8 @@ namespace BugTrackerApp
         private readonly IApiService apiService = ApiService.GetApiService();
         private string authToken;
         private long projectId;
+
+        AndroidX.AppCompat.Widget.SearchView searchView;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -116,10 +121,24 @@ namespace BugTrackerApp
             base.OnSaveInstanceState(outState);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_issues, menu);
+            return true;
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            if (id == Android.Resource.Id.Home)
+            if (id == Resource.Id.action_open_create_issue)
+            {
+                var intent = new Intent(this, typeof(CreateIssueActivity));
+                intent.PutExtra("jwt_token", authToken);
+                intent.PutExtra("project_id", projectId);
+                StartActivity(intent);
+                return true;
+            }
+            else if (id == Android.Resource.Id.Home)
             {
                 Finish();
                 return true;
