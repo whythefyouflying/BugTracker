@@ -74,6 +74,7 @@ namespace BugTrackerApp
             };
 
             mProjectsView = FindViewById<RecyclerView>(Resource.Id.projectsView);
+            mProjectsView.AddItemDecoration(new DividerItemDecoration(Application.Context, DividerItemDecoration.Vertical));
 
             mLayoutManager = new LinearLayoutManager(this);
             mProjectsView.SetLayoutManager(mLayoutManager);
