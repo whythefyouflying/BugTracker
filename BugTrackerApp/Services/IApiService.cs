@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Threading.Tasks;
 
 using BugTrackerApp.Models;
@@ -31,5 +32,8 @@ namespace BugTrackerApp.Services
 
         [Get("/projects/{projectId}/issues/{issueNumber}")]
         Task<Issue> GetIssue(long projectId, int issueNumber);
+
+        [Get("/projects/{projectId}/issues/{issueNumber}/comments")]
+        Task<List<Comment>> GetComments(long projectId, int issueNumber);
     }
 }

@@ -65,6 +65,7 @@
     <Compile Include="CreateProjectActivity.cs" />
     <Compile Include="IssueActivity.cs" />
     <Compile Include="IssuesActivity.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\User.cs" />
@@ -187,6 +188,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\menu\menu_issues.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\issue_info.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\comment_card_view.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
