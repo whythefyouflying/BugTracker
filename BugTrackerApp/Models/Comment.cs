@@ -9,4 +9,9 @@ namespace BugTrackerApp.Models
         public DateTime CreatedAt { get; set; }
         public User User { get; set; }
     }
+
+    public class PostComment
+    {
+        public string Body { get; set; }
+    }
 }

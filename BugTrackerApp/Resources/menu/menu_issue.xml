@@ -1,0 +1,12 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+	<item
+        android:id="@+id/action_create_comment"
+        android:orderInCategory="100"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="@string/action_createcomment"
+        app:showAsAction="ifRoom"/>
+  
+</menu>

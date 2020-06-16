@@ -180,10 +180,20 @@ namespace BugTrackerApp
             base.OnSaveInstanceState(outState);
         }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.menu_issue, menu);
+            return true;
+        }
+
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             int id = item.ItemId;
-            if (id == Android.Resource.Id.Home)
+            if (id == Resource.Id.action_create_comment)
+            {
+                return true;
+            }
+            else if (id == Android.Resource.Id.Home)
             {
                 Finish();
                 return true;

@@ -9,4 +9,5 @@
 	<string name="project_issues">Issues</string>
 	<string name="create_issue">Create Issue</string>
 	<string name="action_createissue">Create Issue</string>
+	<string	name="action_createcomment">Comment</string>
 </resources>

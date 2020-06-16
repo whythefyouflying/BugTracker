@@ -35,5 +35,8 @@ namespace BugTrackerApp.Services
 
         [Get("/projects/{projectId}/issues/{issueNumber}/comments")]
         Task<List<Comment>> GetComments(long projectId, int issueNumber);
+
+        [Post("/projects/{projectId}/issues/{issueNumber}/comments")]
+        Task<Comment> PostComment(long projectId, int issueNumber, [Body] PostComment commentDetails, [Header("Authorization")] string bearerToken);
     }
 }
