@@ -79,6 +79,7 @@ namespace BugTrackerApp
                     intent.PutExtra("project_id", projectId);
                     intent.PutExtra("issue_number", issue.Number);
                     StartActivity(intent);
+                    Finish();
                 })
                 .ContinueWithFailure(ex =>
                 {

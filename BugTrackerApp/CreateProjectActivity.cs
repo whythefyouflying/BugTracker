@@ -85,6 +85,7 @@ namespace BugTrackerApp
                     intent.PutExtra("jwt_token", authToken);
                     intent.PutExtra("project_id", project.Id);
                     StartActivity(intent);
+                    Finish();
                 })
                 .ContinueWithFailure(ex =>
                 {

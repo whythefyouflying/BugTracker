@@ -37,8 +37,6 @@ namespace BugTrackerApp
         private string authToken;
         private long projectId;
 
-        AndroidX.AppCompat.Widget.SearchView searchView;
-
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -150,11 +148,11 @@ namespace BugTrackerApp
         void OnItemClick(object sender, int position)
         {
             Issue issue = mAdapter.mIssuesList[position];
-            Toast.MakeText(Application.Context, $"Opening {issue.Title}", ToastLength.Short).Show();
-            //var intent = new Intent(this, typeof(IssueActivity));
-            //intent.PutExtra("jwt_token", authToken);
-            //intent.PutExtra("project_id", project.Id);
-            //StartActivity(intent);
+            var intent = new Intent(this, typeof(IssueActivity));
+            intent.PutExtra("jwt_token", authToken);
+            intent.PutExtra("project_id", projectId);
+            intent.PutExtra("issue_number", issue.Number);
+            StartActivity(intent);
         }
     }
 

@@ -20,7 +20,7 @@ using Xamarin.Essentials;
 
 namespace BugTrackerApp
 {
-    [Activity(Label = "IssueActivity", Theme = "@style/AppTheme.NoActionBar", ParentActivity = typeof(MainActivity))]
+    [Activity(Label = "IssueActivity", Theme = "@style/AppTheme.NoActionBar", ParentActivity = typeof(IssuesActivity))]
     public class IssueActivity : AppCompatActivity
     {
 
