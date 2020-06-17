@@ -16,7 +16,6 @@ using AndroidX.SwipeRefreshLayout.Widget;
 using BugTrackerApp.Models;
 using BugTrackerApp.Services;
 using Google.Android.Material.Chip;
-using Java.Lang;
 using Refit;
 using Xamarin.Essentials;
 
@@ -125,6 +124,16 @@ namespace BugTrackerApp
             {
                 Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
             }
+
+            Button commentButton = FindViewById<Button>(Resource.Id.createCommentButton);
+            EditText commentBody = FindViewById<EditText>(Resource.Id.commentBody);
+
+            commentButton.Click += async (sender, e) =>
+            {
+                PostComment newComment = new PostComment();
+                newComment.Body = commentBody.Text;
+                _ = await PostComment(projectId, issueNumber, newComment, authToken);
+            };
   
         }
 
@@ -172,6 +181,26 @@ namespace BugTrackerApp
             }
         }
 
+        private async Task<Comment> PostComment(long projectId, int issueNumber, PostComment newComment, string bearerToken)
+        {
+            try
+            {
+                return await apiService.PostComment(projectId, issueNumber, newComment, bearerToken);
+            }
+            catch (ApiException ex)
+            {
+                var statusCode = ex.StatusCode;
+                var error = await ex.GetContentAsAsync<ErrorResponse>();
+                Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                return null;
+            }
+            catch (System.Exception ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
+                return null;
+            }
+        }
+
         protected override void OnSaveInstanceState(Bundle outState)
         {
             outState.PutString("jwt_token", authToken);
@@ -180,11 +209,12 @@ namespace BugTrackerApp
             base.OnSaveInstanceState(outState);
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_issue, menu);
-            return true;
-        }
+        // No need for a menu currently
+        //public override bool OnCreateOptionsMenu(IMenu menu)
+        //{
+        //    MenuInflater.Inflate(Resource.Menu.menu_issue, menu);
+        //    return true;
+        //}
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {

@@ -10,4 +10,5 @@
 	<string name="create_issue">Create Issue</string>
 	<string name="action_createissue">Create Issue</string>
 	<string	name="action_createcomment">Comment</string>
+	<string name="comment_hint">Type your comment</string>
 </resources>

@@ -20,21 +20,68 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-   <include layout="@layout/issue_info"/>
+    <include layout="@layout/issue_info"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/commentsSwipeContainer"
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/commentsView"
-            android:scrollbars="vertical"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/commentsSwipeContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentsView"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/issueBottomSheet"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Theme.MaterialComponents.BottomSheetDialog"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_peekHeight="40dp"
+            android:background="@android:color/darker_gray"
+            android:padding="8dp"
+            android:dividerPadding="8dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_margin="10dp"
+                android:layout_width="40dp"
+                android:layout_height="5dp"
+                android:background="@drawable/pill_shape"/>
+            <Button
+                android:id="@+id/createCommentButton"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Comment"
+                android:text="@string/action_createcomment"
+                style="@style/Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/white"/>
+            <EditText
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/commentBody"
+                android:hint="@string/comment_hint"/>
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
