@@ -3650,10 +3650,10 @@ namespace BugTrackerApp
 			public const int clip_vertical = 2131230806;
 			
 			// aapt resource value: 0x7F080057
-			public const int closeIssueButton = 2131230807;
+			public const int collapseActionView = 2131230807;
 			
 			// aapt resource value: 0x7F080058
-			public const int collapseActionView = 2131230808;
+			public const int commentBody = 2131230808;
 			
 			// aapt resource value: 0x7F080059
 			public const int commentCardBody = 2131230809;
@@ -4751,49 +4751,52 @@ namespace BugTrackerApp
 			public const int character_counter_pattern = 2131623973;
 			
 			// aapt resource value: 0x7F0E0026
-			public const int create_issue = 2131623974;
+			public const int comment_hint = 2131623974;
 			
 			// aapt resource value: 0x7F0E0027
-			public const int create_project = 2131623975;
+			public const int create_issue = 2131623975;
 			
 			// aapt resource value: 0x7F0E0028
-			public const int fab_transformation_scrim_behavior = 2131623976;
+			public const int create_project = 2131623976;
 			
 			// aapt resource value: 0x7F0E0029
-			public const int fab_transformation_sheet_behavior = 2131623977;
+			public const int fab_transformation_scrim_behavior = 2131623977;
 			
 			// aapt resource value: 0x7F0E002A
-			public const int hide_bottom_view_on_scroll_behavior = 2131623978;
+			public const int fab_transformation_sheet_behavior = 2131623978;
 			
 			// aapt resource value: 0x7F0E002B
-			public const int mtrl_chip_close_icon_content_description = 2131623979;
+			public const int hide_bottom_view_on_scroll_behavior = 2131623979;
 			
 			// aapt resource value: 0x7F0E002C
-			public const int password_toggle_content_description = 2131623980;
+			public const int mtrl_chip_close_icon_content_description = 2131623980;
 			
 			// aapt resource value: 0x7F0E002D
-			public const int path_password_eye = 2131623981;
+			public const int password_toggle_content_description = 2131623981;
 			
 			// aapt resource value: 0x7F0E002E
-			public const int path_password_eye_mask_strike_through = 2131623982;
+			public const int path_password_eye = 2131623982;
 			
 			// aapt resource value: 0x7F0E002F
-			public const int path_password_eye_mask_visible = 2131623983;
+			public const int path_password_eye_mask_strike_through = 2131623983;
 			
 			// aapt resource value: 0x7F0E0030
-			public const int path_password_strike_through = 2131623984;
-			
-			// aapt resource value: 0x7F0E0032
-			public const int projects = 2131623986;
+			public const int path_password_eye_mask_visible = 2131623984;
 			
 			// aapt resource value: 0x7F0E0031
-			public const int project_issues = 2131623985;
+			public const int path_password_strike_through = 2131623985;
 			
 			// aapt resource value: 0x7F0E0033
-			public const int search_menu_title = 2131623987;
+			public const int projects = 2131623987;
+			
+			// aapt resource value: 0x7F0E0032
+			public const int project_issues = 2131623986;
 			
 			// aapt resource value: 0x7F0E0034
-			public const int status_bar_notification_info_overflow = 2131623988;
+			public const int search_menu_title = 2131623988;
+			
+			// aapt resource value: 0x7F0E0035
+			public const int status_bar_notification_info_overflow = 2131623989;
 			
 			static String()
 			{

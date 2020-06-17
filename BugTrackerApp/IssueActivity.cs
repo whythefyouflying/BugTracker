@@ -124,6 +124,16 @@ namespace BugTrackerApp
             {
                 Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
             }
+
+            Button commentButton = FindViewById<Button>(Resource.Id.createCommentButton);
+            EditText commentBody = FindViewById<EditText>(Resource.Id.commentBody);
+
+            commentButton.Click += async (sender, e) =>
+            {
+                PostComment newComment = new PostComment();
+                newComment.Body = commentBody.Text;
+                _ = await PostComment(projectId, issueNumber, newComment, authToken);
+            };
   
         }
 
@@ -167,6 +177,26 @@ namespace BugTrackerApp
             {
                 Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
                 Finish();
+                return null;
+            }
+        }
+
+        private async Task<Comment> PostComment(long projectId, int issueNumber, PostComment newComment, string bearerToken)
+        {
+            try
+            {
+                return await apiService.PostComment(projectId, issueNumber, newComment, bearerToken);
+            }
+            catch (ApiException ex)
+            {
+                var statusCode = ex.StatusCode;
+                var error = await ex.GetContentAsAsync<ErrorResponse>();
+                Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                return null;
+            }
+            catch (System.Exception ex)
+            {
+                Toast.MakeText(Application.Context, ex.Message, ToastLength.Short).Show();
                 return null;
             }
         }
