@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Text.RegularExpressions;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -55,43 +55,70 @@ namespace BugTrackerApp
 
             loginButton.Click += async (sender, e) =>
             {
-                try
+                if(ValidateUsername(usernameText))
                 {
-                    var response = await apiService.PostLogin(new AuthAccountDetails { Username = usernameText.Text, Password = passwordText.Text });
-                    var token = $"Bearer {response.Token}";
-                    await SecureStorage.SetAsync("jwt_token", token);
+                    try
+                    {
+                        var response = await apiService.PostLogin(new AuthAccountDetails { Username = usernameText.Text, Password = passwordText.Text });
+                        var token = $"Bearer {response.Token}";
+                        await SecureStorage.SetAsync("jwt_token", token);
 
-                    var intent = new Intent(this, typeof(MainActivity));
-                    intent.PutExtra("jwt_token", token);
-                    StartActivity(intent);
-                    Finish();
-                } 
-                catch (ApiException ex)
-                {
-                    var statusCode = ex.StatusCode;
-                    var error = await ex.GetContentAsAsync<ErrorResponse>();
-                    Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                        var intent = new Intent(this, typeof(MainActivity));
+                        intent.PutExtra("jwt_token", token);
+                        StartActivity(intent);
+                        Finish();
+                    }
+                    catch (ApiException ex)
+                    {
+                        var statusCode = ex.StatusCode;
+                        var error = await ex.GetContentAsAsync<ErrorResponse>();
+                        Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(Application.Context, "Device doesn't support secure storage: " + ex.Message, ToastLength.Short).Show();
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Toast.MakeText(Application.Context, "Device doesn't support secure storage: " + ex.Message, ToastLength.Short).Show();
-                }
+                
             };
 
             registerButton.Click += async (sender, e) =>
             {
-                try
+                if(ValidateUsername(usernameText))
                 {
-                    var response = await apiService.PostRegister(new AuthAccountDetails { Username = usernameText.Text, Password = passwordText.Text });
-                    Toast.MakeText(Application.Context, "Register successful!", ToastLength.Short).Show();
-                }
-                catch (ApiException ex)
-                {
-                    var statusCode = ex.StatusCode;
-                    var error = await ex.GetContentAsAsync<ErrorResponse>();
-                    Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                    try
+                    {
+                        var response = await apiService.PostRegister(new AuthAccountDetails { Username = usernameText.Text, Password = passwordText.Text });
+                        Toast.MakeText(Application.Context, "Register successful!", ToastLength.Short).Show();
+                    }
+                    catch (ApiException ex)
+                    {
+                        var statusCode = ex.StatusCode;
+                        var error = await ex.GetContentAsAsync<ErrorResponse>();
+                        Toast.MakeText(Application.Context, error.Message, ToastLength.Short).Show();
+                    }
                 }
             };
+        }
+
+        private bool ValidateUsername(EditText usernameField)
+        {
+            string pattern = @"^[a-zA-Z0-9_]+$";
+            if (usernameField.Text.Length <= 0)
+            {
+                usernameField.Error = "Field can't be empty";
+                return false;
+            }
+            else if (!Regex.Match(usernameField.Text, pattern).Success)
+            {
+                usernameField.Error = "Username can only contain letters, digits and underscore sign.";
+                return false;
+            }
+            else
+            {
+                usernameField.Error = null;
+                return true;
+            }
         }
 
         public override void OnBackPressed()
