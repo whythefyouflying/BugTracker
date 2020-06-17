@@ -16,7 +16,6 @@ using AndroidX.SwipeRefreshLayout.Widget;
 using BugTrackerApp.Models;
 using BugTrackerApp.Services;
 using Google.Android.Material.Chip;
-using Java.Lang;
 using Refit;
 using Xamarin.Essentials;
 
@@ -180,11 +179,12 @@ namespace BugTrackerApp
             base.OnSaveInstanceState(outState);
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
-        {
-            MenuInflater.Inflate(Resource.Menu.menu_issue, menu);
-            return true;
-        }
+        // No need for a menu currently
+        //public override bool OnCreateOptionsMenu(IMenu menu)
+        //{
+        //    MenuInflater.Inflate(Resource.Menu.menu_issue, menu);
+        //    return true;
+        //}
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
