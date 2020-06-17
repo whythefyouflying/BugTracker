@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,6 +11,12 @@
     android:paddingBottom="100px"
     android:paddingLeft="100px"
     android:paddingRight="100px">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bugtracker_logo"
+        tools:src="@drawable/bugtracker_logo"/>
 
     <EditText
         android:layout_width="match_parent"
