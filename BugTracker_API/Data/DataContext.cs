@@ -11,6 +11,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
+using BugTracker_API.Models;
 
 namespace BugTracker_API.Data
 {

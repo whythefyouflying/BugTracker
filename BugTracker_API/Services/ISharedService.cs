@@ -8,10 +8,8 @@
 /// <summary>   Declares the ISharedService interface. </summary>
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using BugTracker_API.Models;
 
 namespace BugTracker_API.Services
 {

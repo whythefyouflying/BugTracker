@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using BugTracker_API.Helpers;
+using BugTracker_API.Models;
 
 namespace BugTracker_API.Controllers
 {

@@ -9,44 +9,48 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using System.Threading.Tasks;
+using BugTracker_API.Models;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-/// <summary>   Interface for authentication repository. </summary>
-///
-/// <remarks>   Dawid, 18/06/2020. </remarks>
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-public interface IAuthRepository
+namespace BugTracker_API.Data
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Registers this user. </summary>
+    /// <summary>   Interface for authentication repository. </summary>
     ///
-    /// <param name="user">     The user. </param>
-    /// <param name="password"> The password. </param>
-    ///
-    /// <returns>   An asynchronous result that yields an user id. </returns>
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    Task<int> Register(User user, string password);
+    public interface IAuthRepository
+    {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Registers this user. </summary>
+        ///
+        /// <param name="user">     The user. </param>
+        /// <param name="password"> The password. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an user id. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Login. </summary>
-    ///
-    /// <param name="username"> The username. </param>
-    /// <param name="password"> The password. </param>
-    ///
-    /// <returns>   An asynchronous result that yields a bearer token string. </returns>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+        Task<int> Register(User user, string password);
 
-    Task<string> Login(string username, string password);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Login. </summary>
+        ///
+        /// <param name="username"> The username. </param>
+        /// <param name="password"> The password. </param>
+        ///
+        /// <returns>   An asynchronous result that yields a bearer token string. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// <summary>   Queries if a given user exists. </summary>
-    ///
-    /// <param name="username"> The username. </param>
-    ///
-    /// <returns>   An asynchronous result that yields true if it succeeds, false if it fails. </returns>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+        Task<string> Login(string username, string password);
 
-    Task<bool> UserExists(string username);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Queries if a given user exists. </summary>
+        ///
+        /// <param name="username"> The username. </param>
+        ///
+        /// <returns>   An asynchronous result that yields true if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        Task<bool> UserExists(string username);
+    }
 }

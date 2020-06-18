@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using BugTracker_API.Data;
 using AutoMapper;
 using BugTracker_API.Services;
+using BugTracker_API.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker_API.Controllers
