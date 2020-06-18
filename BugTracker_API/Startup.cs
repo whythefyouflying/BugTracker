@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Startup.cs </file>
+///
+/// <copyright file="Startup.cs" company="Dawid Osuchowski">
+/// Copyright (c) 2020 Dawid Osuchowski. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the startup class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +19,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System.Linq;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using Microsoft.AspNetCore.Http;
@@ -17,16 +26,45 @@ using BugTracker_API.Services;
 
 namespace BugTracker_API
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A startup. </summary>
+    ///
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class Startup
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="configuration">    The configuration. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets the configuration. </summary>
+        ///
+        /// <value> The configuration. </value>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to add services to the container.
+        /// </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="services"> The services. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(opt =>
@@ -91,7 +129,18 @@ namespace BugTracker_API
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// This method gets called by the runtime. Use this method to configure the HTTP request
+        /// pipeline.
+        /// </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="app">  The application. </param>
+        /// <param name="env">  The environment. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

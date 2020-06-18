@@ -1,4 +1,14 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Helpers\AppException.cs </file>
+///
+/// <copyright file="AppException.cs" company="Dawid Osuchowski">
+/// Copyright (c) 2020 Dawid Osuchowski. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the application exception class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -6,11 +16,40 @@ using System.Threading.Tasks;
 
 namespace BugTracker_API.Helpers
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   Exception for signalling application errors. </summary>
+    ///
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class AppException : Exception
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Default constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public AppException() : base() {  }
 
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="message">  The message. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public AppException(string message) : base(message) { }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="message">  The message. </param>
+        /// <param name="args">     A variable-length parameters list containing arguments. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public AppException(string message, params object[] args)
             : base(String.Format(CultureInfo.CurrentCulture, message, args))

@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Program.cs </file>
+///
+/// <copyright file="Program.cs" company="Dawid Osuchowski">
+/// Copyright (c) 2020 Dawid Osuchowski. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the program class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +22,36 @@ using Microsoft.Extensions.Logging;
 
 namespace BugTracker_API
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A program. </summary>
+    ///
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class Program
     {
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Main entry-point for this application. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="args"> An array of command-line argument strings. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Creates host builder. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="args"> An array of command-line argument strings. </param>
+        ///
+        /// <returns>   The new host builder. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
@@ -39,6 +73,14 @@ namespace BugTracker_API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Gets key vault endpoint. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <returns>   The key vault endpoint. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT");
     }

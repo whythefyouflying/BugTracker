@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Controllers\IssuesController.cs </file>
+///
+/// <copyright file="IssuesController.cs" company="MyCompany.com">
+/// Copyright (c) 2020 MyCompany.com. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the issues controller class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +21,33 @@ using BugTracker_API.Services;
 
 namespace BugTracker_API.Controllers
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A controller for handling Issue requests. </summary>
+    ///
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     [Authorize]
     [Route("api/projects/{projectId:int}/[controller]")]
     [ApiController]
     public class IssuesController : ControllerBase
     {
+        /// <summary>   The context. </summary>
         private readonly DataContext _context;
+        /// <summary>   The mapper. </summary>
         private readonly IMapper _mapper;
+        /// <summary>   The service. </summary>
         private readonly ISharedService _service;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="context">  The context. </param>
+        /// <param name="mapper">   The mapper. </param>
+        /// <param name="service">  The service. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public IssuesController(DataContext context, IMapper mapper, ISharedService service)
         {
@@ -29,6 +58,17 @@ namespace BugTracker_API.Controllers
 
         [AllowAnonymous]
         // GET: api/Issues
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (An Action that handles HTTP GET requests) gets the issues. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the issues. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetIssueDto>>> GetIssues(long projectId)
         {
@@ -44,6 +84,18 @@ namespace BugTracker_API.Controllers
 
         [AllowAnonymous]
         // GET: api/Issues/5
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (An Action that handles HTTP GET requests) gets an issue. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="number">       Number of issue. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the issue. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet("{number}")]
         public async Task<ActionResult<GetIssueDto>> GetIssue(long projectId, long number)
         {
@@ -61,7 +113,21 @@ namespace BugTracker_API.Controllers
             return issue;
         }
 
-        // PUT: api/Issues/5
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   PUT: api/Issues/5. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <exception cref="DbUpdateConcurrencyException"> Thrown when a Database Update Concurrency
+        ///                                                 error condition occurs. </exception>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="number">       Number of issue. </param>
+        /// <param name="putIssue">     The put issue. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an IActionResult. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpPut("{number}")]
         public async Task<IActionResult> PutIssue(long projectId, long number, PutIssueDto putIssue)
         {
@@ -99,7 +165,17 @@ namespace BugTracker_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Issues
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   POST: api/Issues. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="postIssue">    The post issue. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an ActionResult&lt;GetIssueDto&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpPost]
         public async Task<ActionResult<GetIssueDto>> PostIssue(long projectId, PostIssueDto postIssue)
         {
@@ -120,7 +196,17 @@ namespace BugTracker_API.Controllers
             return CreatedAtAction("GetIssue", new { number = issue.Number, projectId }, _mapper.Map<GetIssueDto>(issue));
         }
 
-        // DELETE: api/Issues/5
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   DELETE: api/Issues/5. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="number">       Number of issue. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an ActionResult&lt;GetIssueDto&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpDelete("{number}")]
         public async Task<ActionResult<GetIssueDto>> DeleteIssue(long projectId, long number)
         {
@@ -140,6 +226,16 @@ namespace BugTracker_API.Controllers
 
             return _mapper.Map<GetIssueDto>(issue);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Query if 'id' issue exists. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="id">   The identifier. </param>
+        ///
+        /// <returns>   True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private bool IssueExists(long id)
         {

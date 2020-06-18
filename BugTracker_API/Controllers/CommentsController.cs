@@ -1,4 +1,14 @@
-﻿using System.Collections.Generic;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Controllers\CommentsController.cs </file>
+///
+/// <copyright file="CommentsController.cs" company="Dawid Osuchowski">
+/// Copyright (c) 2020 Dawid Osuchowski. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the comments controller class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +21,33 @@ using BugTracker_API.Services;
 
 namespace BugTracker_API.Controllers
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// <summary>   A controller for handling comments. </summary>
+    ///
+    /// <remarks>   Dawid, 18/06/2020. </remarks>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     [Authorize]
     [Route("api/projects/{projectId:int}/issues/{issueNumber:int}/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
     {
+        /// <summary>   The context. </summary>
         private readonly DataContext _context;
+        /// <summary>   The mapper. </summary>
         private readonly IMapper _mapper;
+        /// <summary>   The service. </summary>
         private readonly ISharedService _service;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="context">  The context. </param>
+        /// <param name="mapper">   The mapper. </param>
+        /// <param name="service">  The service. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public CommentsController(DataContext context, IMapper mapper, ISharedService service)
         {
@@ -29,6 +58,18 @@ namespace BugTracker_API.Controllers
 
         [AllowAnonymous]
         // GET: api/Comments
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (An Action that handles HTTP GET requests) gets the comments. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="issueNumber">  The issue number. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the comments. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GetCommentDto>>> GetComments(long projectId, int issueNumber)
         {
@@ -44,6 +85,19 @@ namespace BugTracker_API.Controllers
 
         [AllowAnonymous]
         // GET: api/Comments/5
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   (An Action that handles HTTP GET requests) gets a comment. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="issueNumber">  The issue number. </param>
+        /// <param name="id">           The identifier. </param>
+        ///
+        /// <returns>   An asynchronous result that yields the comment. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpGet("{id}")]
         public async Task<ActionResult<GetCommentDto>> GetComment(long projectId, int issueNumber, long id)
         {
@@ -60,9 +114,25 @@ namespace BugTracker_API.Controllers
             return comment;
         }
 
-        // PUT: api/Comments/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// PUT: api/Comments/5 To protect from overposting attacks, enable the specific properties you
+        /// want to bind to, for more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <exception cref="DbUpdateConcurrencyException"> Thrown when a Database Update Concurrency
+        ///                                                 error condition occurs. </exception>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="issueNumber">  The issue number. </param>
+        /// <param name="id">           The identifier. </param>
+        /// <param name="putComment">   The put comment. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an IActionResult. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutComment(long projectId, int issueNumber, long id, PutCommentDto putComment)
         {
@@ -99,9 +169,21 @@ namespace BugTracker_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Comments
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>
+        /// POST: api/Comments To protect from overposting attacks, enable the specific properties you
+        /// want to bind to, for more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="issueNumber">  The issue number. </param>
+        /// <param name="postComment">  The post comment. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an ActionResult&lt;GetCommentDto&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpPost]
         public async Task<ActionResult<GetCommentDto>> PostComment(long projectId, int issueNumber, PostCommentDto postComment)
         {
@@ -119,7 +201,18 @@ namespace BugTracker_API.Controllers
             return CreatedAtAction("GetComment", new { id = comment.Id, issueNumber, projectId }, _mapper.Map<GetCommentDto>(comment));
         }
 
-        // DELETE: api/Comments/5
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   DELETE: api/Comments/5. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="projectId">    Identifier for the project. </param>
+        /// <param name="issueNumber">  The issue number. </param>
+        /// <param name="id">           The identifier. </param>
+        ///
+        /// <returns>   An asynchronous result that yields an ActionResult&lt;GetCommentDto&gt; </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         [HttpDelete("{id}")]
         public async Task<ActionResult<GetCommentDto>> DeleteComment(long projectId, int issueNumber, long id)
         {
@@ -140,6 +233,16 @@ namespace BugTracker_API.Controllers
 
             return _mapper.Map<GetCommentDto>(comment);
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Queries if a given comment exists. </summary>
+        ///
+        /// <remarks>   Dawid, 18/06/2020. </remarks>
+        ///
+        /// <param name="id">   The identifier. </param>
+        ///
+        /// <returns>   True if it succeeds, false if it fails. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private bool CommentExists(long id)
         {

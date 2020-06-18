@@ -1,4 +1,14 @@
-﻿using System;
+﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <file>  BugTracker_API\Models\Project\Project.cs </file>
+///
+/// <copyright file="Project.cs" company="Dawid Osuchowski">
+/// Copyright (c) 2020 Dawid Osuchowski. All rights reserved.
+/// </copyright>
+///
+/// <summary>   Implements the project class. </summary>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections.Generic;
 
 public class Project
