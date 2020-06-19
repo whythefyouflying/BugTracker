@@ -1,0 +1,192 @@
+\hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context Class Reference}
+\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+
+
+A data context.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{class_bug_tracker___a_p_i_1_1_data_1_1_data_context__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{class_bug_tracker___a_p_i_1_1_data_1_1_data_context__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_accb787751783af8985cd6eb2664fcb1d}{Data\+Context}} (Db\+Context\+Options$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}} $>$ options)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+override int \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a685ac4c71713ceeee0f6234efee18508}{Save\+Changes}} ()
+\item 
+override Task$<$ int $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa052c646c9d294a1dac9cd39218fe17f}{Save\+Changes\+Async}} (bool accept\+All\+Changes\+On\+Success, Cancellation\+Token cancellation\+Token=default)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a6c6f7730ceb7dfed9bdac6f1b6a83157}{On\+Model\+Creating}} (Model\+Builder model\+Builder)
+\begin{DoxyCompactList}\small\item\em Override this method to further configure the model that was discovered by convention from the entity types exposed in T\+:\+Microsoft.\+Entity\+Framework\+Core.\+Db\+Set\`{}1 properties on your derived context. The resulting model may be cached and re-\/used for subsequent instances of your derived context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Db\+Set$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3380fa513c4dd7f440ac22180c7ea44c}{Projects}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the projects. \end{DoxyCompactList}\item 
+Db\+Set$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_issue}{Issue}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa4abcf0f7d3fd0c2cea42644d07e06c0}{Issues}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the issues. \end{DoxyCompactList}\item 
+Db\+Set$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_comment}{Comment}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa06426c43a94cabd8a089359ff37dbba}{Comments}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the comments. \end{DoxyCompactList}\item 
+Db\+Set$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user}{User}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3eb031784d369652d899bd6eb08d4f49}{Users}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the users. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A data context. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_accb787751783af8985cd6eb2664fcb1d}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_accb787751783af8985cd6eb2664fcb1d}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!DataContext@{DataContext}}
+\index{DataContext@{DataContext}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{DataContext()}{DataContext()}}
+{\footnotesize\ttfamily Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Data\+Context (\begin{DoxyParamCaption}\item[{Db\+Context\+Options$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}} $>$}]{options }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em options} & Options for controlling the operation. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a6c6f7730ceb7dfed9bdac6f1b6a83157}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a6c6f7730ceb7dfed9bdac6f1b6a83157}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!OnModelCreating@{OnModelCreating}}
+\index{OnModelCreating@{OnModelCreating}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{OnModelCreating()}{OnModelCreating()}}
+{\footnotesize\ttfamily override void Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+On\+Model\+Creating (\begin{DoxyParamCaption}\item[{Model\+Builder}]{model\+Builder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Override this method to further configure the model that was discovered by convention from the entity types exposed in T\+:\+Microsoft.\+Entity\+Framework\+Core.\+Db\+Set\`{}1 properties on your derived context. The resulting model may be cached and re-\/used for subsequent instances of your derived context. 
+
+If a model is explicitly set on the options for this context (via M\+:\+Microsoft.\+Entity\+Framework\+Core.\+Db\+Context\+Options\+Builder.\+Use\+Model(\+Microsoft.\+Entity\+Framework\+Core.\+Metadata.\+I\+Model)) then this method will not be run. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model\+Builder} & The builder being used to construct the model for this context. Databases (and other extensions) typically define extension methods on this object that allow you to configure aspects of the model that are specific to a given database. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a685ac4c71713ceeee0f6234efee18508}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a685ac4c71713ceeee0f6234efee18508}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!SaveChanges@{SaveChanges}}
+\index{SaveChanges@{SaveChanges}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{SaveChanges()}{SaveChanges()}}
+{\footnotesize\ttfamily override int Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Save\+Changes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+
+
+Saves all changes made in this context to the database. 
+
+This method will automatically call M\+:\+Microsoft.\+Entity\+Framework\+Core.\+Change\+Tracking.\+Change\+Tracker.\+Detect\+Changes to discover any changes to entity instances before saving to the underlying database. This can be disabled via P\+:\+Microsoft.\+Entity\+Framework\+Core.\+Change\+Tracking.\+Change\+Tracker.\+Auto\+Detect\+Changes\+Enabled. 
+
+Dawid, 18/06/2020. 
+
+\begin{DoxyReturn}{Returns}
+The number of state entries written to the database. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa052c646c9d294a1dac9cd39218fe17f}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa052c646c9d294a1dac9cd39218fe17f}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!SaveChangesAsync@{SaveChangesAsync}}
+\index{SaveChangesAsync@{SaveChangesAsync}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{SaveChangesAsync()}{SaveChangesAsync()}}
+{\footnotesize\ttfamily override Task$<$int$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Save\+Changes\+Async (\begin{DoxyParamCaption}\item[{bool}]{accept\+All\+Changes\+On\+Success,  }\item[{Cancellation\+Token}]{cancellation\+Token = {\ttfamily default} }\end{DoxyParamCaption})}
+
+
+
+
+
+Saves all changes made in this context to the database. 
+
+This method will automatically call M\+:\+Microsoft.\+Entity\+Framework\+Core.\+Change\+Tracking.\+Change\+Tracker.\+Detect\+Changes to discover any changes to entity instances before saving to the underlying database. This can be disabled via P\+:\+Microsoft.\+Entity\+Framework\+Core.\+Change\+Tracking.\+Change\+Tracker.\+Auto\+Detect\+Changes\+Enabled. 
+
+Multiple active operations on the same context instance are not supported. Use \textquotesingle{}await\textquotesingle{} to ensure that any asynchronous operations have completed before calling another method on this context. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em accept\+All\+Changes\+On\+Success} & Indicates whether M\+:\+Microsoft.\+Entity\+Framework\+Core.\+Change\+Tracking.\+Change\+Tracker.\+Accept\+All\+Changes is called after the changes have been sent successfully to the database. \\
+\hline
+{\em cancellation\+Token} & (Optional) A T\+:\+System.\+Threading.\+Cancellation\+Token to observe while waiting for the task to complete. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A task that represents the asynchronous save operation. The task result contains the number of state entries written to the database. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa06426c43a94cabd8a089359ff37dbba}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa06426c43a94cabd8a089359ff37dbba}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!Comments@{Comments}}
+\index{Comments@{Comments}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{Comments}{Comments}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_comment}{Comment}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Comments\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the comments. 
+
+The comments. \mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa4abcf0f7d3fd0c2cea42644d07e06c0}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_aa4abcf0f7d3fd0c2cea42644d07e06c0}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!Issues@{Issues}}
+\index{Issues@{Issues}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{Issues}{Issues}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_issue}{Issue}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Issues\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the issues. 
+
+The issues. \mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3380fa513c4dd7f440ac22180c7ea44c}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3380fa513c4dd7f440ac22180c7ea44c}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!Projects@{Projects}}
+\index{Projects@{Projects}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{Projects}{Projects}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Projects\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the projects. 
+
+The projects. \mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3eb031784d369652d899bd6eb08d4f49}\label{class_bug_tracker___a_p_i_1_1_data_1_1_data_context_a3eb031784d369652d899bd6eb08d4f49}} 
+\index{BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}!Users@{Users}}
+\index{Users@{Users}!BugTracker\_API.Data.DataContext@{BugTracker\_API.Data.DataContext}}
+\doxysubsubsection{\texorpdfstring{Users}{Users}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user}{User}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Data\+Context.\+Users\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the users. 
+
+The users. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Data/Data\+Context.\+cs\end{DoxyCompactItemize}

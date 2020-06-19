@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['searchview_313',['SearchView',['../class_search_view.html',1,'']]],
+  ['searchview_5foncloselistenerimplementor_314',['SearchView_OnCloseListenerImplementor',['../classmono_1_1androidx_1_1appcompat_1_1widget_1_1_search_view___on_close_listener_implementor.html',1,'mono::androidx::appcompat::widget']]],
+  ['searchview_5fonquerytextlistenerimplementor_315',['SearchView_OnQueryTextListenerImplementor',['../classmono_1_1androidx_1_1appcompat_1_1widget_1_1_search_view___on_query_text_listener_implementor.html',1,'mono::androidx::appcompat::widget']]],
+  ['searchview_5fonsuggestionlistenerimplementor_316',['SearchView_OnSuggestionListenerImplementor',['../classmono_1_1androidx_1_1appcompat_1_1widget_1_1_search_view___on_suggestion_listener_implementor.html',1,'mono::androidx::appcompat::widget']]],
+  ['secretkey_317',['SecretKey',['../class_bug_tracker___a_p_i_1_1_secret_key.html',1,'BugTracker_API']]],
+  ['sensorlistener_318',['SensorListener',['../classcrc64a0e0a82d0db9a07d_1_1_sensor_listener.html',1,'crc64a0e0a82d0db9a07d']]],
+  ['shareactionprovider_5fonsharetargetselectedlistenerimplementor_319',['ShareActionProvider_OnShareTargetSelectedListenerImplementor',['../classmono_1_1androidx_1_1appcompat_1_1widget_1_1_share_action_provider___on_share_target_selected_listener_implementor.html',1,'mono::androidx::appcompat::widget']]],
+  ['sharedelementcallback_5fonsharedelementsreadylistenerimplementor_320',['SharedElementCallback_OnSharedElementsReadyListenerImplementor',['../classmono_1_1androidx_1_1core_1_1app_1_1_shared_element_callback___on_shared_elements_ready_listener_implementor.html',1,'mono::androidx::core::app']]],
+  ['sharedservice_321',['SharedService',['../class_bug_tracker___a_p_i_1_1_services_1_1_shared_service.html',1,'BugTracker_API::Services']]],
+  ['singlelocationlistener_322',['SingleLocationListener',['../classcrc64a0e0a82d0db9a07d_1_1_single_location_listener.html',1,'crc64a0e0a82d0db9a07d']]],
+  ['slidingpanelayout_5fpanelslidelistenerimplementor_323',['SlidingPaneLayout_PanelSlideListenerImplementor',['../classmono_1_1androidx_1_1slidingpanelayout_1_1widget_1_1_sliding_pane_layout___panel_slide_listener_implementor.html',1,'mono::androidx::slidingpanelayout::widget']]],
+  ['snackbar_5fsnackbaractionclickimplementor_324',['Snackbar_SnackbarActionClickImplementor',['../classcom_1_1google_1_1android_1_1material_1_1snackbar_1_1_snackbar___snackbar_action_click_implementor.html',1,'com::google::android::material::snackbar']]],
+  ['startup_325',['Startup',['../class_bug_tracker___a_p_i_1_1_startup.html',1,'BugTracker_API']]],
+  ['string_326',['String',['../class_bug_tracker_app_1_1_resource_1_1_string.html',1,'BugTrackerApp::Resource']]],
+  ['style_327',['Style',['../class_bug_tracker_app_1_1_resource_1_1_style.html',1,'BugTrackerApp::Resource']]],
+  ['styleable_328',['Styleable',['../class_bug_tracker_app_1_1_resource_1_1_styleable.html',1,'BugTrackerApp::Resource']]],
+  ['swipedismissbehavior_5fondismisslistenerimplementor_329',['SwipeDismissBehavior_OnDismissListenerImplementor',['../classmono_1_1com_1_1google_1_1android_1_1material_1_1behavior_1_1_swipe_dismiss_behavior___on_dismiss_listener_implementor.html',1,'mono::com::google::android::material::behavior']]],
+  ['swiperefreshlayout_5fonrefreshlistenerimplementor_330',['SwipeRefreshLayout_OnRefreshListenerImplementor',['../classmono_1_1androidx_1_1swiperefreshlayout_1_1widget_1_1_swipe_refresh_layout___on_refresh_listener_implementor.html',1,'mono::androidx::swiperefreshlayout::widget']]]
+];

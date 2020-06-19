@@ -1,0 +1,111 @@
+\hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller Class Reference}
+\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller}\index{BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}}
+
+
+A controller for handling authentication.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_af93caaeceda155c8ab29b205e5937c51}{Auth\+Controller}} (\mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository}{I\+Auth\+Repository}} auth\+Repository)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+async Task$<$ I\+Action\+Result $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a5820f227169d144ab22c1bb797d821e4}{Register}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user_register_dto}{User\+Register\+Dto}} request)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP P\+O\+ST requests) Registers the user. \end{DoxyCompactList}\item 
+async Task$<$ I\+Action\+Result $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a7cdebe2df73db09f1187b7f4ac5a2e5b}{Login}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user_login_dto}{User\+Login\+Dto}} request)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP P\+O\+ST requests) Login. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A controller for handling authentication. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_af93caaeceda155c8ab29b205e5937c51}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_af93caaeceda155c8ab29b205e5937c51}} 
+\index{BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}!AuthController@{AuthController}}
+\index{AuthController@{AuthController}!BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}}
+\doxysubsubsection{\texorpdfstring{AuthController()}{AuthController()}}
+{\footnotesize\ttfamily Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller.\+Auth\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository}{I\+Auth\+Repository}}}]{auth\+Repository }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em auth\+Repository} & The authentication repository. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a7cdebe2df73db09f1187b7f4ac5a2e5b}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a7cdebe2df73db09f1187b7f4ac5a2e5b}} 
+\index{BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}!Login@{Login}}
+\index{Login@{Login}!BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily async Task$<$I\+Action\+Result$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller.\+Login (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user_login_dto}{User\+Login\+Dto}}}]{request }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP P\+O\+ST requests) Login. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The request. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an I\+Action\+Result. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a5820f227169d144ab22c1bb797d821e4}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_auth_controller_a5820f227169d144ab22c1bb797d821e4}} 
+\index{BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}!Register@{Register}}
+\index{Register@{Register}!BugTracker\_API.Controllers.AuthController@{BugTracker\_API.Controllers.AuthController}}
+\doxysubsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily async Task$<$I\+Action\+Result$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Auth\+Controller.\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user_register_dto}{User\+Register\+Dto}}}]{request }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP P\+O\+ST requests) Registers the user. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & The request. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an I\+Action\+Result. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Controllers/Auth\+Controller.\+cs\end{DoxyCompactItemize}

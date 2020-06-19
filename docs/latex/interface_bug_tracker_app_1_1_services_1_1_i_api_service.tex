@@ -1,0 +1,252 @@
+\hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service}{}\doxysection{Bug\+Tracker\+App.\+Services.\+I\+Api\+Service Interface Reference}
+\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service}\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+
+
+Interface for A\+PI service.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_token}{Auth\+Token}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a90716f2b70a556f4c7670b96fd8a0a43}{Post\+Login}} (\mbox{[}Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_account_details}{Auth\+Account\+Details}} login\+Details)
+\begin{DoxyCompactList}\small\item\em Posts a login. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_id}{Auth\+Id}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a03b9f4564acaae753523a546cb009b60}{Post\+Register}} (\mbox{[}Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_account_details}{Auth\+Account\+Details}} register\+Details)
+\begin{DoxyCompactList}\small\item\em Posts a register. \end{DoxyCompactList}\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}} $>$ $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_aa0efebd0b53a73f0009c93c00f169e31}{Get\+Projects}} ()
+\begin{DoxyCompactList}\small\item\em Gets the projects. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a3f9659dcf57b101bb8c19b2ba01ed041}{Get\+Project}} (\mbox{[}Alias\+As(\char`\"{}id\char`\"{})\mbox{]} long project\+Id)
+\begin{DoxyCompactList}\small\item\em Gets a project. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af6283050ae8657c477377851aa50e4e1}{Post\+Project}} (\mbox{[}Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_project}{Post\+Project}} project\+Details, \mbox{[}Header(\char`\"{}Authorization\char`\"{})\mbox{]} string bearer\+Token)
+\begin{DoxyCompactList}\small\item\em Posts a project. \end{DoxyCompactList}\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a68af8b5235028acc1b1042bae885761f}{Get\+Issues}} (\mbox{[}Alias\+As(\char`\"{}project\+Id\char`\"{})\mbox{]} long project\+Id)
+\begin{DoxyCompactList}\small\item\em Gets the issues. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ae020e755c0d5e53802681dcc32b59a86}{Post\+Issue}} (\mbox{[}Alias\+As(\char`\"{}project\+Id\char`\"{})\mbox{]} long project\+Id, \mbox{[}Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_issue}{Post\+Issue}} issue\+Details, \mbox{[}Header(\char`\"{}Authorization\char`\"{})\mbox{]} string bearer\+Token)
+\begin{DoxyCompactList}\small\item\em Posts an issue. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a519133f91a4c3cc0f73bc9a15c8de9c5}{Get\+Issue}} (long project\+Id, int issue\+Number)
+\begin{DoxyCompactList}\small\item\em Gets an issue. \end{DoxyCompactList}\item 
+Task$<$ List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$ $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ab6ad722b299a0c671b4870a82c1e2dfc}{Get\+Comments}} (long project\+Id, int issue\+Number)
+\begin{DoxyCompactList}\small\item\em Gets the comments. \end{DoxyCompactList}\item 
+Task$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$ \mbox{\hyperlink{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af078e732c41f66391b55a16b30fc5cdb}{Post\+Comment}} (long project\+Id, int issue\+Number, \mbox{[}Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_comment}{Post\+Comment}} comment\+Details, \mbox{[}Header(\char`\"{}Authorization\char`\"{})\mbox{]} string bearer\+Token)
+\begin{DoxyCompactList}\small\item\em Posts a comment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for A\+PI service. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ab6ad722b299a0c671b4870a82c1e2dfc}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ab6ad722b299a0c671b4870a82c1e2dfc}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!GetComments@{GetComments}}
+\index{GetComments@{GetComments}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{GetComments()}{GetComments()}}
+{\footnotesize\ttfamily Task$<$List$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}}$>$ $>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Get\+Comments (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number }\end{DoxyParamCaption})}
+
+
+
+Gets the comments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the comments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a519133f91a4c3cc0f73bc9a15c8de9c5}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a519133f91a4c3cc0f73bc9a15c8de9c5}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!GetIssue@{GetIssue}}
+\index{GetIssue@{GetIssue}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{GetIssue()}{GetIssue()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Get\+Issue (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number }\end{DoxyParamCaption})}
+
+
+
+Gets an issue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the issue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a68af8b5235028acc1b1042bae885761f}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a68af8b5235028acc1b1042bae885761f}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!GetIssues@{GetIssues}}
+\index{GetIssues@{GetIssues}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{GetIssues()}{GetIssues()}}
+{\footnotesize\ttfamily Task$<$List$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}}$>$ $>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Get\+Issues (\begin{DoxyParamCaption}\item[{\mbox{[}\+Alias\+As(\char`\"{}project\+Id\char`\"{})\mbox{]} long}]{project\+Id }\end{DoxyParamCaption})}
+
+
+
+Gets the issues. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the issues. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a3f9659dcf57b101bb8c19b2ba01ed041}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a3f9659dcf57b101bb8c19b2ba01ed041}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!GetProject@{GetProject}}
+\index{GetProject@{GetProject}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{GetProject()}{GetProject()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Get\+Project (\begin{DoxyParamCaption}\item[{\mbox{[}\+Alias\+As(\char`\"{}id\char`\"{})\mbox{]} long}]{project\+Id }\end{DoxyParamCaption})}
+
+
+
+Gets a project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the project. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_aa0efebd0b53a73f0009c93c00f169e31}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_aa0efebd0b53a73f0009c93c00f169e31}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!GetProjects@{GetProjects}}
+\index{GetProjects@{GetProjects}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{GetProjects()}{GetProjects()}}
+{\footnotesize\ttfamily Task$<$List$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}}$>$ $>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Get\+Projects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the projects. 
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the projects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af078e732c41f66391b55a16b30fc5cdb}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af078e732c41f66391b55a16b30fc5cdb}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!PostComment@{PostComment}}
+\index{PostComment@{PostComment}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{PostComment()}{PostComment()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Post\+Comment (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number,  }\item[{\mbox{[}\+Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_comment}{Post\+Comment}}}]{comment\+Details,  }\item[{\mbox{[}\+Header(\char`\"{}\+Authorization\char`\"{})\mbox{]} string}]{bearer\+Token }\end{DoxyParamCaption})}
+
+
+
+Posts a comment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+{\em comment\+Details} & The comment details. \\
+\hline
+{\em bearer\+Token} & The bearer token. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields a Comment. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ae020e755c0d5e53802681dcc32b59a86}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_ae020e755c0d5e53802681dcc32b59a86}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!PostIssue@{PostIssue}}
+\index{PostIssue@{PostIssue}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{PostIssue()}{PostIssue()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Post\+Issue (\begin{DoxyParamCaption}\item[{\mbox{[}\+Alias\+As(\char`\"{}project\+Id\char`\"{})\mbox{]} long}]{project\+Id,  }\item[{\mbox{[}\+Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_issue}{Post\+Issue}}}]{issue\+Details,  }\item[{\mbox{[}\+Header(\char`\"{}\+Authorization\char`\"{})\mbox{]} string}]{bearer\+Token }\end{DoxyParamCaption})}
+
+
+
+Posts an issue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Details} & The issue details. \\
+\hline
+{\em bearer\+Token} & The bearer token. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Issue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a90716f2b70a556f4c7670b96fd8a0a43}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a90716f2b70a556f4c7670b96fd8a0a43}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!PostLogin@{PostLogin}}
+\index{PostLogin@{PostLogin}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{PostLogin()}{PostLogin()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_token}{Auth\+Token}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Post\+Login (\begin{DoxyParamCaption}\item[{\mbox{[}\+Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_account_details}{Auth\+Account\+Details}}}]{login\+Details }\end{DoxyParamCaption})}
+
+
+
+Posts a login. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em login\+Details} & The login details. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Auth\+Token. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af6283050ae8657c477377851aa50e4e1}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_af6283050ae8657c477377851aa50e4e1}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!PostProject@{PostProject}}
+\index{PostProject@{PostProject}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{PostProject()}{PostProject()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_project}{Project}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Post\+Project (\begin{DoxyParamCaption}\item[{\mbox{[}\+Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_post_project}{Post\+Project}}}]{project\+Details,  }\item[{\mbox{[}\+Header(\char`\"{}\+Authorization\char`\"{})\mbox{]} string}]{bearer\+Token }\end{DoxyParamCaption})}
+
+
+
+Posts a project. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Details} & The project details. \\
+\hline
+{\em bearer\+Token} & The bearer token. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields a Project. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a03b9f4564acaae753523a546cb009b60}\label{interface_bug_tracker_app_1_1_services_1_1_i_api_service_a03b9f4564acaae753523a546cb009b60}} 
+\index{BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}!PostRegister@{PostRegister}}
+\index{PostRegister@{PostRegister}!BugTrackerApp.Services.IApiService@{BugTrackerApp.Services.IApiService}}
+\doxysubsubsection{\texorpdfstring{PostRegister()}{PostRegister()}}
+{\footnotesize\ttfamily Task$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_id}{Auth\+Id}}$>$ Bug\+Tracker\+App.\+Services.\+I\+Api\+Service.\+Post\+Register (\begin{DoxyParamCaption}\item[{\mbox{[}\+Body\mbox{]} \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_auth_account_details}{Auth\+Account\+Details}}}]{register\+Details }\end{DoxyParamCaption})}
+
+
+
+Posts a register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em register\+Details} & The register details. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Auth\+Id. 
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+App/\+Services/I\+Api\+Service.\+cs\end{DoxyCompactItemize}

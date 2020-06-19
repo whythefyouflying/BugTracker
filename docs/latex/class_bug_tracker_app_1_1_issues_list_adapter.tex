@@ -1,0 +1,195 @@
+\hypertarget{class_bug_tracker_app_1_1_issues_list_adapter}{}\doxysection{Bug\+Tracker\+App.\+Issues\+List\+Adapter Class Reference}
+\label{class_bug_tracker_app_1_1_issues_list_adapter}\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+
+
+The issues list adapter.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+App.\+Issues\+List\+Adapter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_bug_tracker_app_1_1_issues_list_adapter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+App.\+Issues\+List\+Adapter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{class_bug_tracker_app_1_1_issues_list_adapter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a1130f05b01f24295fab7c16d86451554}{Issues\+List\+Adapter}} (List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ issues\+List)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+override Recycler\+View.\+View\+Holder \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a0b87d149fef468080e74ab45bf0b9d75}{On\+Create\+View\+Holder}} (View\+Group parent, int view\+Type)
+\begin{DoxyCompactList}\small\item\em Executes the create view holder action. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_aaf09cc67b7c801249034c71e2ae19adf}{On\+Bind\+View\+Holder}} (Recycler\+View.\+View\+Holder holder, int position)
+\begin{DoxyCompactList}\small\item\em Executes the bind view holder action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a5e0e872cf0adefb3fd7f18e2b5eac159}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the Recycler\+View to its blank/initial state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a0234aaf4a4da79927c81bb34efab7f6c}{add\+All}} (List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ issues)
+\begin{DoxyCompactList}\small\item\em Adds all Issues to the Recycler\+View. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$ \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a22f579146da308fa13abcea54ac6b2cb}{m\+Issues\+List}}
+\begin{DoxyCompactList}\small\item\em List of issues. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+override int \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_ae5eacf1a2c1e3e5ee040683d29e3a276}{Item\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ int $>$ \mbox{\hyperlink{class_bug_tracker_app_1_1_issues_list_adapter_a089e2af942895fdb855473408fa46d2f}{Item\+Click}}
+\begin{DoxyCompactList}\small\item\em Event queue for all listeners interested in Item\+Click events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The issues list adapter. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a1130f05b01f24295fab7c16d86451554}\label{class_bug_tracker_app_1_1_issues_list_adapter_a1130f05b01f24295fab7c16d86451554}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!IssuesListAdapter@{IssuesListAdapter}}
+\index{IssuesListAdapter@{IssuesListAdapter}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{IssuesListAdapter()}{IssuesListAdapter()}}
+{\footnotesize\ttfamily Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+Issues\+List\+Adapter (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$}]{issues\+List }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em issues\+List} & List of issues. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a0234aaf4a4da79927c81bb34efab7f6c}\label{class_bug_tracker_app_1_1_issues_list_adapter_a0234aaf4a4da79927c81bb34efab7f6c}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!addAll@{addAll}}
+\index{addAll@{addAll}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{addAll()}{addAll()}}
+{\footnotesize\ttfamily void Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+add\+All (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}} $>$}]{issues }\end{DoxyParamCaption})}
+
+
+
+Adds all Issues to the Recycler\+View. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em issues} & The issues. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a5e0e872cf0adefb3fd7f18e2b5eac159}\label{class_bug_tracker_app_1_1_issues_list_adapter_a5e0e872cf0adefb3fd7f18e2b5eac159}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!clear@{clear}}
+\index{clear@{clear}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the Recycler\+View to its blank/initial state. 
+
+Dawid, 18/06/2020. \mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_aaf09cc67b7c801249034c71e2ae19adf}\label{class_bug_tracker_app_1_1_issues_list_adapter_aaf09cc67b7c801249034c71e2ae19adf}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!OnBindViewHolder@{OnBindViewHolder}}
+\index{OnBindViewHolder@{OnBindViewHolder}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{OnBindViewHolder()}{OnBindViewHolder()}}
+{\footnotesize\ttfamily override void Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+On\+Bind\+View\+Holder (\begin{DoxyParamCaption}\item[{Recycler\+View.\+View\+Holder}]{holder,  }\item[{int}]{position }\end{DoxyParamCaption})}
+
+
+
+Executes the bind view holder action. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em holder} & The holder. \\
+\hline
+{\em position} & The position. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a0b87d149fef468080e74ab45bf0b9d75}\label{class_bug_tracker_app_1_1_issues_list_adapter_a0b87d149fef468080e74ab45bf0b9d75}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!OnCreateViewHolder@{OnCreateViewHolder}}
+\index{OnCreateViewHolder@{OnCreateViewHolder}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{OnCreateViewHolder()}{OnCreateViewHolder()}}
+{\footnotesize\ttfamily override Recycler\+View.\+View\+Holder Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+On\+Create\+View\+Holder (\begin{DoxyParamCaption}\item[{View\+Group}]{parent,  }\item[{int}]{view\+Type }\end{DoxyParamCaption})}
+
+
+
+Executes the create view holder action. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent. \\
+\hline
+{\em view\+Type} & Type of the view. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A Recycler\+View.\+View\+Holder. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a22f579146da308fa13abcea54ac6b2cb}\label{class_bug_tracker_app_1_1_issues_list_adapter_a22f579146da308fa13abcea54ac6b2cb}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!mIssuesList@{mIssuesList}}
+\index{mIssuesList@{mIssuesList}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{mIssuesList}{mIssuesList}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_issue}{Issue}}$>$ Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+m\+Issues\+List}
+
+
+
+List of issues. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_ae5eacf1a2c1e3e5ee040683d29e3a276}\label{class_bug_tracker_app_1_1_issues_list_adapter_ae5eacf1a2c1e3e5ee040683d29e3a276}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!ItemCount@{ItemCount}}
+\index{ItemCount@{ItemCount}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{ItemCount}{ItemCount}}
+{\footnotesize\ttfamily override int Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+Item\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of items. 
+
+The number of items. 
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_issues_list_adapter_a089e2af942895fdb855473408fa46d2f}\label{class_bug_tracker_app_1_1_issues_list_adapter_a089e2af942895fdb855473408fa46d2f}} 
+\index{BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}!ItemClick@{ItemClick}}
+\index{ItemClick@{ItemClick}!BugTrackerApp.IssuesListAdapter@{BugTrackerApp.IssuesListAdapter}}
+\doxysubsubsection{\texorpdfstring{ItemClick}{ItemClick}}
+{\footnotesize\ttfamily Event\+Handler$<$int$>$ Bug\+Tracker\+App.\+Issues\+List\+Adapter.\+Item\+Click}
+
+
+
+Event queue for all listeners interested in Item\+Click events. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+App/Issues\+Activity.\+cs\end{DoxyCompactItemize}

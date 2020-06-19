@@ -1,0 +1,189 @@
+\hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller Class Reference}
+\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller}\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+
+
+A controller for handling projects.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a459d48f0f08166dfbbf8fecd0568b93a}{Projects\+Controller}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}} context, I\+Mapper mapper, \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service}{I\+Shared\+Service}} service)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ I\+Enumerable$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}} $>$ $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a434665264eda3891a1de91632f2f569c}{Get\+Projects}} ()
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP G\+ET requests) gets the projects. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a8c7ebbec5e79f477bf5d42a598b56e3e}{Get\+Project}} (long id)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP G\+ET requests) gets a project. \end{DoxyCompactList}\item 
+async Task$<$ I\+Action\+Result $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a13f671172c1ae75ac72dc18e9d8d4af1}{Put\+Project}} (long id, \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_put_project_dto}{Put\+Project\+Dto}} put\+Project)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP P\+UT requests) puts a project. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ada21bed50b0cf8a9e83dcf661b7d30e7}{Post\+Project}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_post_project_dto}{Post\+Project\+Dto}} post\+Project)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP P\+O\+ST requests) posts a project. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ab1c3f9c473de42340a59917614f9148b}{Delete\+Project}} (long id)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP D\+E\+L\+E\+TE requests) deletes the project described by ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A controller for handling projects. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a459d48f0f08166dfbbf8fecd0568b93a}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a459d48f0f08166dfbbf8fecd0568b93a}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!ProjectsController@{ProjectsController}}
+\index{ProjectsController@{ProjectsController}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{ProjectsController()}{ProjectsController()}}
+{\footnotesize\ttfamily Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Projects\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}}}]{context,  }\item[{I\+Mapper}]{mapper,  }\item[{\mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service}{I\+Shared\+Service}}}]{service }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context. \\
+\hline
+{\em mapper} & The mapper. \\
+\hline
+{\em service} & The service. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ab1c3f9c473de42340a59917614f9148b}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ab1c3f9c473de42340a59917614f9148b}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!DeleteProject@{DeleteProject}}
+\index{DeleteProject@{DeleteProject}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{DeleteProject()}{DeleteProject()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Delete\+Project (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP D\+E\+L\+E\+TE requests) deletes the project described by ID. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Action\+Result$<$Get\+Project\+Dto$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a8c7ebbec5e79f477bf5d42a598b56e3e}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a8c7ebbec5e79f477bf5d42a598b56e3e}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!GetProject@{GetProject}}
+\index{GetProject@{GetProject}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{GetProject()}{GetProject()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Get\+Project (\begin{DoxyParamCaption}\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP G\+ET requests) gets a project. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the project. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a434665264eda3891a1de91632f2f569c}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a434665264eda3891a1de91632f2f569c}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!GetProjects@{GetProjects}}
+\index{GetProjects@{GetProjects}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{GetProjects()}{GetProjects()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$I\+Enumerable$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}}$>$ $>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Get\+Projects (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP G\+ET requests) gets the projects. 
+
+Dawid, 18/06/2020. 
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the projects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ada21bed50b0cf8a9e83dcf661b7d30e7}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_ada21bed50b0cf8a9e83dcf661b7d30e7}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!PostProject@{PostProject}}
+\index{PostProject@{PostProject}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{PostProject()}{PostProject()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_project_dto}{Get\+Project\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Post\+Project (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_post_project_dto}{Post\+Project\+Dto}}}]{post\+Project }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP P\+O\+ST requests) posts a project. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em post\+Project} & The post project. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Action\+Result$<$Get\+Project\+Dto$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a13f671172c1ae75ac72dc18e9d8d4af1}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_projects_controller_a13f671172c1ae75ac72dc18e9d8d4af1}} 
+\index{BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}!PutProject@{PutProject}}
+\index{PutProject@{PutProject}!BugTracker\_API.Controllers.ProjectsController@{BugTracker\_API.Controllers.ProjectsController}}
+\doxysubsubsection{\texorpdfstring{PutProject()}{PutProject()}}
+{\footnotesize\ttfamily async Task$<$I\+Action\+Result$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Projects\+Controller.\+Put\+Project (\begin{DoxyParamCaption}\item[{long}]{id,  }\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_put_project_dto}{Put\+Project\+Dto}}}]{put\+Project }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP P\+UT requests) puts a project. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Db\+Update\+Concurrency\+Exception} & Thrown when a Database Update Concurrency error condition occurs. \\
+\hline
+\end{DoxyExceptions}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The identifier. \\
+\hline
+{\em put\+Project} & The put project. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an I\+Action\+Result. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Controllers/Projects\+Controller.\+cs\end{DoxyCompactItemize}

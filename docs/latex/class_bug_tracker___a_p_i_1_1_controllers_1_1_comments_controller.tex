@@ -1,0 +1,214 @@
+\hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller Class Reference}
+\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller}\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+
+
+A controller for handling comments.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ad9d0fe651cfa9bb87c7a667afb41e1cd}{Comments\+Controller}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}} context, I\+Mapper mapper, \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service}{I\+Shared\+Service}} service)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ I\+Enumerable$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}} $>$ $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_aafc280959a0c9b1884983e02bf1fdeec}{Get\+Comments}} (long project\+Id, int issue\+Number)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP G\+ET requests) gets the comments. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a4e8d0f4bb31b41e0b9c02506d7ab812a}{Get\+Comment}} (long project\+Id, int issue\+Number, long id)
+\begin{DoxyCompactList}\small\item\em (An Action that handles H\+T\+TP G\+ET requests) gets a comment. \end{DoxyCompactList}\item 
+async Task$<$ I\+Action\+Result $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a919e9fa83d9977cb565e9a500bef18e8}{Put\+Comment}} (long project\+Id, int issue\+Number, long id, \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_put_comment_dto}{Put\+Comment\+Dto}} put\+Comment)
+\begin{DoxyCompactList}\small\item\em P\+UT\+: api/\+Comments/5 To protect from overposting attacks, enable the specific properties you want to bind to, for more details, see \href{https://go.microsoft.com/fwlink/?linkid=2123754}{\texttt{ https\+://go.\+microsoft.\+com/fwlink/?linkid=2123754}}. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ac5c6f232311238759853df6237fbeb33}{Post\+Comment}} (long project\+Id, int issue\+Number, \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_post_comment_dto}{Post\+Comment\+Dto}} post\+Comment)
+\begin{DoxyCompactList}\small\item\em P\+O\+ST\+: api/\+Comments To protect from overposting attacks, enable the specific properties you want to bind to, for more details, see \href{https://go.microsoft.com/fwlink/?linkid=2123754}{\texttt{ https\+://go.\+microsoft.\+com/fwlink/?linkid=2123754}}. \end{DoxyCompactList}\item 
+async Task$<$ Action\+Result$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}} $>$ $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ae4380de492f174c1ef21ffe447fb2670}{Delete\+Comment}} (long project\+Id, int issue\+Number, long id)
+\begin{DoxyCompactList}\small\item\em D\+E\+L\+E\+TE\+: api/\+Comments/5. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A controller for handling comments. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ad9d0fe651cfa9bb87c7a667afb41e1cd}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ad9d0fe651cfa9bb87c7a667afb41e1cd}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!CommentsController@{CommentsController}}
+\index{CommentsController@{CommentsController}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{CommentsController()}{CommentsController()}}
+{\footnotesize\ttfamily Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Comments\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}}}]{context,  }\item[{I\+Mapper}]{mapper,  }\item[{\mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service}{I\+Shared\+Service}}}]{service }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context. \\
+\hline
+{\em mapper} & The mapper. \\
+\hline
+{\em service} & The service. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ae4380de492f174c1ef21ffe447fb2670}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ae4380de492f174c1ef21ffe447fb2670}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!DeleteComment@{DeleteComment}}
+\index{DeleteComment@{DeleteComment}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{DeleteComment()}{DeleteComment()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Delete\+Comment (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number,  }\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+D\+E\+L\+E\+TE\+: api/\+Comments/5. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+{\em id} & The identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Action\+Result$<$Get\+Comment\+Dto$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a4e8d0f4bb31b41e0b9c02506d7ab812a}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a4e8d0f4bb31b41e0b9c02506d7ab812a}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!GetComment@{GetComment}}
+\index{GetComment@{GetComment}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{GetComment()}{GetComment()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Get\+Comment (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number,  }\item[{long}]{id }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP G\+ET requests) gets a comment. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+{\em id} & The identifier. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the comment. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_aafc280959a0c9b1884983e02bf1fdeec}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_aafc280959a0c9b1884983e02bf1fdeec}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!GetComments@{GetComments}}
+\index{GetComments@{GetComments}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{GetComments()}{GetComments()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$I\+Enumerable$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}}$>$ $>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Get\+Comments (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number }\end{DoxyParamCaption})}
+
+
+
+(An Action that handles H\+T\+TP G\+ET requests) gets the comments. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the comments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ac5c6f232311238759853df6237fbeb33}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_ac5c6f232311238759853df6237fbeb33}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!PostComment@{PostComment}}
+\index{PostComment@{PostComment}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{PostComment()}{PostComment()}}
+{\footnotesize\ttfamily async Task$<$Action\+Result$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_get_comment_dto}{Get\+Comment\+Dto}}$>$ $>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Post\+Comment (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number,  }\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_post_comment_dto}{Post\+Comment\+Dto}}}]{post\+Comment }\end{DoxyParamCaption})}
+
+
+
+P\+O\+ST\+: api/\+Comments To protect from overposting attacks, enable the specific properties you want to bind to, for more details, see \href{https://go.microsoft.com/fwlink/?linkid=2123754}{\texttt{ https\+://go.\+microsoft.\+com/fwlink/?linkid=2123754}}. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+{\em post\+Comment} & The post comment. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an Action\+Result$<$Get\+Comment\+Dto$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a919e9fa83d9977cb565e9a500bef18e8}\label{class_bug_tracker___a_p_i_1_1_controllers_1_1_comments_controller_a919e9fa83d9977cb565e9a500bef18e8}} 
+\index{BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}!PutComment@{PutComment}}
+\index{PutComment@{PutComment}!BugTracker\_API.Controllers.CommentsController@{BugTracker\_API.Controllers.CommentsController}}
+\doxysubsubsection{\texorpdfstring{PutComment()}{PutComment()}}
+{\footnotesize\ttfamily async Task$<$I\+Action\+Result$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Controllers.\+Comments\+Controller.\+Put\+Comment (\begin{DoxyParamCaption}\item[{long}]{project\+Id,  }\item[{int}]{issue\+Number,  }\item[{long}]{id,  }\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_put_comment_dto}{Put\+Comment\+Dto}}}]{put\+Comment }\end{DoxyParamCaption})}
+
+
+
+P\+UT\+: api/\+Comments/5 To protect from overposting attacks, enable the specific properties you want to bind to, for more details, see \href{https://go.microsoft.com/fwlink/?linkid=2123754}{\texttt{ https\+://go.\+microsoft.\+com/fwlink/?linkid=2123754}}. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Db\+Update\+Concurrency\+Exception} & Thrown when a Database Update Concurrency error condition occurs. \\
+\hline
+\end{DoxyExceptions}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+{\em id} & The identifier. \\
+\hline
+{\em put\+Comment} & The put comment. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an I\+Action\+Result. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Controllers/Comments\+Controller.\+cs\end{DoxyCompactItemize}

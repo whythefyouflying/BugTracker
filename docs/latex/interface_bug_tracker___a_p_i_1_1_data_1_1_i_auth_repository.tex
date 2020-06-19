@@ -1,0 +1,114 @@
+\hypertarget{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+I\+Auth\+Repository Interface Reference}
+\label{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository}\index{BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}}
+
+
+Interface for authentication repository.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+I\+Auth\+Repository\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ int $>$ \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a002fda3921b9fda8224bc1aacdeb9006}{Register}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user}{User}} user, string password)
+\begin{DoxyCompactList}\small\item\em Registers this user. \end{DoxyCompactList}\item 
+Task$<$ string $>$ \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a962a8237f47ae61b2968011bec77b112}{Login}} (string username, string password)
+\begin{DoxyCompactList}\small\item\em Login. \end{DoxyCompactList}\item 
+Task$<$ bool $>$ \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a48febdb72b61842618e49a3c8da4b760}{User\+Exists}} (string username)
+\begin{DoxyCompactList}\small\item\em Queries if a given user exists. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for authentication repository. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a962a8237f47ae61b2968011bec77b112}\label{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a962a8237f47ae61b2968011bec77b112}} 
+\index{BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}!Login@{Login}}
+\index{Login@{Login}!BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily Task$<$string$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+I\+Auth\+Repository.\+Login (\begin{DoxyParamCaption}\item[{string}]{username,  }\item[{string}]{password }\end{DoxyParamCaption})}
+
+
+
+Login. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username. \\
+\hline
+{\em password} & The password. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields a bearer token string. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_auth_repository_ab907b72d01be3cf1c874204611843601}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Auth\+Repository}}.
+
+\mbox{\Hypertarget{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a002fda3921b9fda8224bc1aacdeb9006}\label{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a002fda3921b9fda8224bc1aacdeb9006}} 
+\index{BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}!Register@{Register}}
+\index{Register@{Register}!BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}}
+\doxysubsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily Task$<$int$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+I\+Auth\+Repository.\+Register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_user}{User}}}]{user,  }\item[{string}]{password }\end{DoxyParamCaption})}
+
+
+
+Registers this user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user. \\
+\hline
+{\em password} & The password. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields an user id. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_auth_repository_afb4bf1e2d81dae28de87ee65c132a6b0}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Auth\+Repository}}.
+
+\mbox{\Hypertarget{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a48febdb72b61842618e49a3c8da4b760}\label{interface_bug_tracker___a_p_i_1_1_data_1_1_i_auth_repository_a48febdb72b61842618e49a3c8da4b760}} 
+\index{BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}!UserExists@{UserExists}}
+\index{UserExists@{UserExists}!BugTracker\_API.Data.IAuthRepository@{BugTracker\_API.Data.IAuthRepository}}
+\doxysubsubsection{\texorpdfstring{UserExists()}{UserExists()}}
+{\footnotesize\ttfamily Task$<$bool$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+I\+Auth\+Repository.\+User\+Exists (\begin{DoxyParamCaption}\item[{string}]{username }\end{DoxyParamCaption})}
+
+
+
+Queries if a given user exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em username} & The username. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields true if it succeeds, false if it fails. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_auth_repository_ab37cede5738af62f491f3bd1b55ffd09}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Data.\+Auth\+Repository}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Data/I\+Auth\+Repository.\+cs\end{DoxyCompactItemize}

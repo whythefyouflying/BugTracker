@@ -1,0 +1,144 @@
+\hypertarget{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service}{}\doxysection{Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service Class Reference}
+\label{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service}\index{BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}}
+
+
+A service for accessing shared information.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_ad6fc854eaef41c2434db720a4e366ea6}{Shared\+Service}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}} context, I\+Http\+Context\+Accessor http\+Context\+Accessor)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_issue}{Issue}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a0fba296e010c9ffeb26e0e734477acfa}{Get\+Issue\+Async}} (\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}} project, int issue\+Number)
+\begin{DoxyCompactList}\small\item\em Gets issue asynchronous. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_aab992d49c2808478f028e7a22b07de98}{Get\+Current\+User\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Gets current user identifier. \end{DoxyCompactList}\item 
+async Task$<$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}} $>$ \mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a9f540689054e224def864b20b4de6bb3}{Get\+Project\+Async}} (long project\+Id)
+\begin{DoxyCompactList}\small\item\em Gets project asynchronous. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A service for accessing shared information. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_ad6fc854eaef41c2434db720a4e366ea6}\label{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_ad6fc854eaef41c2434db720a4e366ea6}} 
+\index{BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}!SharedService@{SharedService}}
+\index{SharedService@{SharedService}!BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}}
+\doxysubsubsection{\texorpdfstring{SharedService()}{SharedService()}}
+{\footnotesize\ttfamily Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service.\+Shared\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_data_1_1_data_context}{Data\+Context}}}]{context,  }\item[{I\+Http\+Context\+Accessor}]{http\+Context\+Accessor }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The context. \\
+\hline
+{\em http\+Context\+Accessor} & The H\+T\+TP context accessor. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_aab992d49c2808478f028e7a22b07de98}\label{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_aab992d49c2808478f028e7a22b07de98}} 
+\index{BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}!GetCurrentUserId@{GetCurrentUserId}}
+\index{GetCurrentUserId@{GetCurrentUserId}!BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}}
+\doxysubsubsection{\texorpdfstring{GetCurrentUserId()}{GetCurrentUserId()}}
+{\footnotesize\ttfamily int Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service.\+Get\+Current\+User\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets current user identifier. 
+
+Dawid, 18/06/2020. 
+
+\begin{DoxyReturn}{Returns}
+The current user identifier. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service_a5aee73c477a18dc9f3eae18e94119817}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+I\+Shared\+Service}}.
+
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a0fba296e010c9ffeb26e0e734477acfa}\label{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a0fba296e010c9ffeb26e0e734477acfa}} 
+\index{BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}!GetIssueAsync@{GetIssueAsync}}
+\index{GetIssueAsync@{GetIssueAsync}!BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}}
+\doxysubsubsection{\texorpdfstring{GetIssueAsync()}{GetIssueAsync()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_issue}{Issue}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service.\+Get\+Issue\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}}}]{project,  }\item[{int}]{issue\+Number }\end{DoxyParamCaption})}
+
+
+
+Gets issue asynchronous. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project} & The project. \\
+\hline
+{\em issue\+Number} & The issue number. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the issue. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service_a3004936b9c4c3fc2e90e284ecd4ddb3e}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+I\+Shared\+Service}}.
+
+\mbox{\Hypertarget{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a9f540689054e224def864b20b4de6bb3}\label{class_bug_tracker___a_p_i_1_1_services_1_1_shared_service_a9f540689054e224def864b20b4de6bb3}} 
+\index{BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}!GetProjectAsync@{GetProjectAsync}}
+\index{GetProjectAsync@{GetProjectAsync}!BugTracker\_API.Services.SharedService@{BugTracker\_API.Services.SharedService}}
+\doxysubsubsection{\texorpdfstring{GetProjectAsync()}{GetProjectAsync()}}
+{\footnotesize\ttfamily async Task$<$\mbox{\hyperlink{class_bug_tracker___a_p_i_1_1_models_1_1_project}{Project}}$>$ Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+Shared\+Service.\+Get\+Project\+Async (\begin{DoxyParamCaption}\item[{long}]{project\+Id }\end{DoxyParamCaption})}
+
+
+
+Gets project asynchronous. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em project\+Id} & Identifier for the project. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An asynchronous result that yields the project. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service_a6da0942e934454d96e36e78ee48efd80}{Bug\+Tracker\+\_\+\+A\+P\+I.\+Services.\+I\+Shared\+Service}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+\_\+\+A\+P\+I/\+Services/Shared\+Service.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,187,137,214"/>
+<area shape="rect" id="node2" href="$class_bug_tracker_app_1_1_create_issue_activity.html" title="A create issue activity." alt="" coords="193,5,377,47"/>
+<area shape="rect" id="node3" href="$class_bug_tracker_app_1_1_create_project_activity.html" title="A create project activity." alt="" coords="187,71,382,112"/>
+<area shape="rect" id="node4" href="$class_bug_tracker_app_1_1_issue_activity.html" title="An issue activity." alt="" coords="191,137,379,163"/>
+<area shape="rect" id="node5" href="$class_bug_tracker_app_1_1_issues_activity.html" title="The issues activity." alt="" coords="187,187,382,214"/>
+<area shape="rect" id="node6" href="$class_bug_tracker_app_1_1_login_activity.html" title="A login activity." alt="" coords="191,238,379,265"/>
+<area shape="rect" id="node7" href="$class_bug_tracker_app_1_1_main_activity.html" title="A main activity." alt="" coords="192,289,377,315"/>
+<area shape="rect" id="node8" href="$class_bug_tracker_app_1_1_project_activity.html" title="A project activity." alt="" coords="185,339,384,366"/>
+</map>

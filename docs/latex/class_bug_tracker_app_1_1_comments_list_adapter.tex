@@ -1,0 +1,195 @@
+\hypertarget{class_bug_tracker_app_1_1_comments_list_adapter}{}\doxysection{Bug\+Tracker\+App.\+Comments\+List\+Adapter Class Reference}
+\label{class_bug_tracker_app_1_1_comments_list_adapter}\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+
+
+The comments list adapter.  
+
+
+
+
+Inheritance diagram for Bug\+Tracker\+App.\+Comments\+List\+Adapter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_bug_tracker_app_1_1_comments_list_adapter__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bug\+Tracker\+App.\+Comments\+List\+Adapter\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_bug_tracker_app_1_1_comments_list_adapter__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a8cf90812b5d63cf4a019c44e37fe6707}{Comments\+List\+Adapter}} (List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$ comments\+List)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+override Recycler\+View.\+View\+Holder \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_aafb243ae793e94c1849a6599469999b0}{On\+Create\+View\+Holder}} (View\+Group parent, int view\+Type)
+\begin{DoxyCompactList}\small\item\em Executes the create view holder action. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a31553cf9807b1a24b28953cd4fb0f73b}{On\+Bind\+View\+Holder}} (Recycler\+View.\+View\+Holder holder, int position)
+\begin{DoxyCompactList}\small\item\em Executes the bind view holder action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a5689ecbf2af4d96b94d00ea1e374206c}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Clears the Comments Recycler\+View to its blank/initial state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a1ed11ef87de37fcc2d0b883656467401}{Add\+All}} (List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$ comments)
+\begin{DoxyCompactList}\small\item\em Adds all Comments to the Recycler\+View \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$ \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a9668f62eed64c8207d87e69b5d5cac6c}{m\+Comments\+List}}
+\begin{DoxyCompactList}\small\item\em List of comments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+override int \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_ae3f209596d3217a3f8f68412c2f63736}{Item\+Count}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ int $>$ \mbox{\hyperlink{class_bug_tracker_app_1_1_comments_list_adapter_a4de1a821b1c6f93cc7363d61a2d61735}{Item\+Click}}
+\begin{DoxyCompactList}\small\item\em Event queue for all listeners interested in Item\+Click events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The comments list adapter. 
+
+Dawid, 18/06/2020. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a8cf90812b5d63cf4a019c44e37fe6707}\label{class_bug_tracker_app_1_1_comments_list_adapter_a8cf90812b5d63cf4a019c44e37fe6707}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!CommentsListAdapter@{CommentsListAdapter}}
+\index{CommentsListAdapter@{CommentsListAdapter}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{CommentsListAdapter()}{CommentsListAdapter()}}
+{\footnotesize\ttfamily Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+Comments\+List\+Adapter (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$}]{comments\+List }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comments\+List} & List of comments. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a1ed11ef87de37fcc2d0b883656467401}\label{class_bug_tracker_app_1_1_comments_list_adapter_a1ed11ef87de37fcc2d0b883656467401}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!AddAll@{AddAll}}
+\index{AddAll@{AddAll}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{AddAll()}{AddAll()}}
+{\footnotesize\ttfamily void Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+Add\+All (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}} $>$}]{comments }\end{DoxyParamCaption})}
+
+
+
+Adds all Comments to the Recycler\+View 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em comments} & The comments. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a5689ecbf2af4d96b94d00ea1e374206c}\label{class_bug_tracker_app_1_1_comments_list_adapter_a5689ecbf2af4d96b94d00ea1e374206c}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!Clear@{Clear}}
+\index{Clear@{Clear}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the Comments Recycler\+View to its blank/initial state. 
+
+Dawid, 18/06/2020. \mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a31553cf9807b1a24b28953cd4fb0f73b}\label{class_bug_tracker_app_1_1_comments_list_adapter_a31553cf9807b1a24b28953cd4fb0f73b}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!OnBindViewHolder@{OnBindViewHolder}}
+\index{OnBindViewHolder@{OnBindViewHolder}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{OnBindViewHolder()}{OnBindViewHolder()}}
+{\footnotesize\ttfamily override void Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+On\+Bind\+View\+Holder (\begin{DoxyParamCaption}\item[{Recycler\+View.\+View\+Holder}]{holder,  }\item[{int}]{position }\end{DoxyParamCaption})}
+
+
+
+Executes the bind view holder action. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em holder} & The holder. \\
+\hline
+{\em position} & The position. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_aafb243ae793e94c1849a6599469999b0}\label{class_bug_tracker_app_1_1_comments_list_adapter_aafb243ae793e94c1849a6599469999b0}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!OnCreateViewHolder@{OnCreateViewHolder}}
+\index{OnCreateViewHolder@{OnCreateViewHolder}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{OnCreateViewHolder()}{OnCreateViewHolder()}}
+{\footnotesize\ttfamily override Recycler\+View.\+View\+Holder Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+On\+Create\+View\+Holder (\begin{DoxyParamCaption}\item[{View\+Group}]{parent,  }\item[{int}]{view\+Type }\end{DoxyParamCaption})}
+
+
+
+Executes the create view holder action. 
+
+Dawid, 18/06/2020. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & The parent. \\
+\hline
+{\em view\+Type} & Type of the view. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A Recycler\+View.\+View\+Holder. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a9668f62eed64c8207d87e69b5d5cac6c}\label{class_bug_tracker_app_1_1_comments_list_adapter_a9668f62eed64c8207d87e69b5d5cac6c}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!mCommentsList@{mCommentsList}}
+\index{mCommentsList@{mCommentsList}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{mCommentsList}{mCommentsList}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_bug_tracker_app_1_1_models_1_1_comment}{Comment}}$>$ Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+m\+Comments\+List}
+
+
+
+List of comments. 
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_ae3f209596d3217a3f8f68412c2f63736}\label{class_bug_tracker_app_1_1_comments_list_adapter_ae3f209596d3217a3f8f68412c2f63736}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!ItemCount@{ItemCount}}
+\index{ItemCount@{ItemCount}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{ItemCount}{ItemCount}}
+{\footnotesize\ttfamily override int Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+Item\+Count\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of items. 
+
+The number of items. 
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_bug_tracker_app_1_1_comments_list_adapter_a4de1a821b1c6f93cc7363d61a2d61735}\label{class_bug_tracker_app_1_1_comments_list_adapter_a4de1a821b1c6f93cc7363d61a2d61735}} 
+\index{BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}!ItemClick@{ItemClick}}
+\index{ItemClick@{ItemClick}!BugTrackerApp.CommentsListAdapter@{BugTrackerApp.CommentsListAdapter}}
+\doxysubsubsection{\texorpdfstring{ItemClick}{ItemClick}}
+{\footnotesize\ttfamily Event\+Handler$<$int$>$ Bug\+Tracker\+App.\+Comments\+List\+Adapter.\+Item\+Click}
+
+
+
+Event queue for all listeners interested in Item\+Click events. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Dawid/source/repos/\+Bug\+Tracker/\+Bug\+Tracker\+App/Issue\+Activity.\+cs\end{DoxyCompactItemize}

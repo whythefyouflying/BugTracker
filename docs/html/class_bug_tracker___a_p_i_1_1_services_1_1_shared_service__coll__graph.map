@@ -1,0 +1,4 @@
+<map id="BugTracker_API.Services.SharedService" name="BugTracker_API.Services.SharedService">
+<area shape="rect" id="node1" title="A service for accessing shared information." alt="" coords="5,80,179,121"/>
+<area shape="rect" id="node2" href="$interface_bug_tracker___a_p_i_1_1_services_1_1_i_shared_service.html" title="Interface for shared service." alt="" coords="38,5,146,32"/>
+</map>
